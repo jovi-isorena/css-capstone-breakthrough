@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// route for teacher homepage
 Route::get('/teacher', function () {
     return view('homepage/index');
 });
