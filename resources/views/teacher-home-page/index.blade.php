@@ -1,7 +1,5 @@
 @extends('/layouts/layout-teacher')
-
 @section('content')
-
 <div class="float-container">
         <div class="float-child">
             <h1>Ina ng Buhay Catholic School</h1>
