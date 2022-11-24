@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
 // route for teacher homepage
 Route::get('/teacher', function () {
-    return view('homepage/index');
+    return view('teacher-home-page/index');
 });
 
 
