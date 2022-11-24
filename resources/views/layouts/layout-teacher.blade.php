@@ -142,7 +142,6 @@ body{
             {{-- To include navigation or navbar--}}
             @include('layouts.teacher-navigation')
 
-
             @yield('content')
 <br>
 <!-- Footer -->
