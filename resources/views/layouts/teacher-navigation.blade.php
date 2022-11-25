@@ -7,6 +7,8 @@
       <div class=" d-flex">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+            @if (Route::has('login'))
+            @auth
             <li class="nav-item">
               <a class="nav-link text-dark" aria-current="page" href="#">Classes</a>
             </li>
@@ -16,6 +18,8 @@
             <li class="nav-item">
               <a class="nav-link text-dark" href="#">Posted Task</a>
             </li>
+            @endauth
+            @endif
             <li class="nav-item">
               <a class="nav-link text-dark" href="#">About Us</a>
             </li>
