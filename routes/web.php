@@ -49,4 +49,9 @@ Route::get('/teacher-classes', function () {
 Route::get('/teacher-class-stream', function () {
     return view('teacher-class-stream-page/index');
 });
+
+// route for teacher class activiy page
+Route::get('/teacher-class-activity', function () {
+    return view('teacher-class-activity-page/index');
+});
 require __DIR__.'/auth.php';

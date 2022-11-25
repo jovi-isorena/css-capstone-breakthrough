@@ -43,9 +43,9 @@ li a.active {
     background-color: #fff;
 }
 
-
-
-
+textarea {
+    resize: none;
+}
 
 /*form stuff*/
 form {
@@ -72,9 +72,6 @@ span.input-group-addon {
 select {
     border: none;
 }
-
-
-
 
 
 /* for side by side div */
