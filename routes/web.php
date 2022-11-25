@@ -34,9 +34,15 @@ Route::get('/teacher', function () {
     return view('teacher-home-page/index');
 });
 
-// route for teacher homepage
+// route for teacher login
 Route::get('/teacher-login', function () {
     return view('teacher-login-page/index');
+});
+
+
+// route for teacher classes
+Route::get('/teacher-classes', function () {
+    return view('teacher-classes-page/index');
 });
 
 require __DIR__.'/auth.php';
