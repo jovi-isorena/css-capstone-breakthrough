@@ -14,6 +14,67 @@
         <script src="https://kit.fontawesome.com/9a8a7844ac.js" crossorigin="anonymous"></script>
 
         <style>
+            /* For tabs */
+div#exTab1.container {
+    padding-bottom: 64px;
+}
+li a.active {
+    background: #E9C46A;
+}
+.nav-fill > li > a.class-stream {
+    color: #fff;
+    background-color: #666666;
+}
+.nav-fill > a > a.adopt-tab.active {
+    background-color: #fff;
+}
+.nav-fill > li > a.class-list {
+    color: #fff;
+    background-color: #666666;
+}
+.nav-fill > li> a.class-list.active {
+    background-color: #fff;
+}
+.nav-fill > li > a.class-work{
+    color: #fff;
+    background-color: #666666;
+}
+.nav-fill > li > a.class-work.active {
+    background-color: #fff;
+}
+
+
+
+
+
+/*form stuff*/
+form {
+    padding: 32px;
+}
+label {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: .05em;
+}
+input {
+    border: none;
+}
+.input-group input {
+    height: 40px;
+}
+.form-group select {
+    height: 40px;
+}
+span.input-group-addon {
+    border: none;
+}
+select {
+    border: none;
+}
+
+
+
 
 
 /* for side by side div */
@@ -234,6 +295,7 @@ body{
   @else
   @endauth
   @endif
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     </body>
 </html>
