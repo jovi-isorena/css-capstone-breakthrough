@@ -10,7 +10,7 @@
         <img src="{{ URL('images/placeholder.jpg') }}" alt="This is image">
      </div>
     <div class="float-child">
-        <form>
+        <form style="padding: 32px;">
         <div class="row">
             <div class="col">
             <div class="mb-3">

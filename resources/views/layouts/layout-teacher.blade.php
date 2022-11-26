@@ -47,10 +47,6 @@ textarea {
     resize: none;
 }
 
-/*form stuff*/
-form {
-    padding: 32px;
-}
 label {
     font-family: 'Roboto', sans-serif !important;
     font-size: 18px;
