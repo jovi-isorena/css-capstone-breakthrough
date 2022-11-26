@@ -2,7 +2,11 @@
 
 <!DOCTYPE html> 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
+    crossorigin="anonymous">
 <style>
 body{
     margin: 2px;
@@ -239,6 +243,7 @@ click.addEventListener("click",()=>{
     <li class="active"><a href="subjects">Subjects</a></li>
         <li><a href="calendar">Calendar</a></li>
         <li><a href="todo">To-Do</a></li>
+        <li><a href="aboutus"> About us</a></li>
         </h4>
     </ul>
     <div class="logo">
