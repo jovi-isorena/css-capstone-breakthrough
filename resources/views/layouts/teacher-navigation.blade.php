@@ -97,7 +97,6 @@
                 <li>
                   <form method="POST" action="{{ route('logout') }}">
                   @csrf
-
                   <x-dropdown-link-teacher :href="route('logout')"
                           onclick="event.preventDefault();
                                       this.closest('form').submit();">
@@ -116,10 +115,9 @@
                               <a href="{{ route('register') }}" class="nav-link text-dark">Register</a>
                           </li>
                               @endif
-                      @endauth
-              @endif
-
           </li>
+           @endauth
+              @endif
           </ul>
 
     </div>
