@@ -89,4 +89,9 @@ Route::get('/teacher-posted-task-subject-student', function () {
 Route::get('/teacher-create-task', function () {
     return view('teacher-create-task-page/index');
 });
+
+// route for teacher create task page
+Route::get('/teacher-profile', function () {
+    return view('teacher-profile-page/index');
+});
 require __DIR__.'/auth.php';
