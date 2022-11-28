@@ -70,8 +70,10 @@ Route::get('/teacher-posted-task', function () {
     return view('teacher-posted-task-page/index');
 });
 
-// route for teacher posted task page
+// route for teacher posted task subject page
 Route::get('/teacher-posted-task-subject', function () {
     return view('teacher-posted-task-subject-page/index');
 });
+
+
 require __DIR__.'/auth.php';
