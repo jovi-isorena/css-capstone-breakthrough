@@ -23,10 +23,10 @@
           <p class="text-dark" style="text-align:center;font-size:30px;">
           <strong>Announcements</strong>
             </p>
-            <br>
+            <br/>
 
             <img class="rounded mx-auto d-block" src="{{ URL('images/placeholder.jpg') }}" alt="This is image" width="450px" height="300px">
-<br>
+<br/>
 <p class="text-dark" style="text-align:center;font-size:20px;">
     <strong>Announcement description</strong>
       </p>
@@ -113,6 +113,8 @@
             </h5>
         </div>
     </div>
-    <br>
-
+<br/>
+@include('layouts.teacher-footer')
 @endsection
+
+
