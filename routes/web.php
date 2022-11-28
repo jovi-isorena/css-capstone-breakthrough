@@ -62,6 +62,6 @@ Route::get('/teacher-class-list-detail', function () {
 
 // route for teacher class subject score page
 Route::get('/teacher-subject-score', function () {
-    return view('teacher-class-subject-score-page/index');
+    return view('teacher-subject-score-page/index');
 });
 require __DIR__.'/auth.php';
