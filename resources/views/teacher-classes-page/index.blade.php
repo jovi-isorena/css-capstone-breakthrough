@@ -25,7 +25,7 @@
             <div class="card-body p-4">
               <div class="row d-flex justify-content-between align-items-center">
                 <div class="col-md-3 col-lg-3 col-xl-3">
-                  <p class="lead fw-normal mb-2">Subject 3</p>
+                  <p class="lead fw-normal mb-2">Subject 2</p>
                   <p style="margin: 0;">Section</p>
                   <p style="margin: 0;">Information</p>
                 </div>

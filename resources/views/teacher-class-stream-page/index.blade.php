@@ -9,6 +9,7 @@
             <li><a class="nav-item nav-link class-stream active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Class Stream</a></li>
             <li><a class="nav-item nav-link class-list" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Class List</a></li>
             <li><a class="nav-item nav-link class-work" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Class Work</a></li>
+            <li><a class="nav-item nav-link class-score" id="nav-score-tab" data-bs-toggle="tab" href="#nav-score" role="tab" aria-controls="nav-contact" aria-selected="false">Scores</a></li>
         </div>
     </nav>
 
@@ -91,7 +92,7 @@
             </div>
         </div>
         </div>
-       
+
     </div>
 </div>
 

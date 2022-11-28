@@ -21,9 +21,14 @@ div#exTab1.container {
 li a.active {
     background: #E9C46A;
 }
+
+.nav-fill > li{
+   padding: 2px;
+}
 .nav-fill > li > a.class-stream {
     color: #fff;
     background-color: #666666;
+    width: 200px;
 }
 .nav-fill > a > a.adopt-tab.active {
     background-color: #fff;
@@ -31,6 +36,7 @@ li a.active {
 .nav-fill > li > a.class-list {
     color: #fff;
     background-color: #666666;
+    width: 200px;
 }
 .nav-fill > li> a.class-list.active {
     background-color: #fff;
@@ -38,10 +44,21 @@ li a.active {
 .nav-fill > li > a.class-work{
     color: #fff;
     background-color: #666666;
+    width: 200px;
 }
 .nav-fill > li > a.class-work.active {
     background-color: #fff;
 }
+
+.nav-fill > li > a.class-score{
+    color: #fff;
+    background-color: #666666;
+    width: 200px;
+}
+.nav-fill > li > a.class-score.active {
+    background-color: #fff;
+}
+
 
 textarea {
     resize: none;
