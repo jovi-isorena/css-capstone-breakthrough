@@ -79,4 +79,9 @@ Route::get('/teacher-posted-task-subject', function () {
 Route::get('/teacher-posted-task-section', function () {
     return view('teacher-posted-task-section-list-page/index');
 });
+
+// route for teacher posted task subject student
+Route::get('/teacher-posted-task-subject-student', function () {
+    return view('teacher-posted-task-subject-student-page/index');
+});
 require __DIR__.'/auth.php';
