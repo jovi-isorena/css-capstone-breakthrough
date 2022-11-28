@@ -10,32 +10,32 @@
 {{-- Table body --}}
     <div class="card-body">
   <div class="table-responsive">
-    <table class="table border border-3 rounded-0" style="width:100%">
+    <table class="table table-bordered rounded-0" style="width:100%">
            <thead>
       <tr>
-         <th class="w-15 text-center border-end">Photo</th>
+         <th class="w-15 text-center">Photo</th>
           <th class="w-85 text-center">Student Name</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <th class="border-end rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
+            <th class="rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
             <th class="text-center align-middle text-secondary">Student 1</th>
         </tr>
         <tr>
-            <th class="border-end rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
+            <th class="rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
             <th class="text-center align-middle text-secondary">Student 2</th>
         </tr>
         <tr>
-            <th class="border-end rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
+            <th class="rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
             <th class="text-center align-middle text-secondary">Student 3</th>
         </tr>
         <tr>
-            <th class="border-end rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
+            <th class="rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
             <th class="text-center align-middle text-secondary">Student 4</th>
         </tr>
         <tr>
-            <th class="border-end rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
+            <th class="rounded-0 m-0 w-25"><img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 100px;"></th>
             <th class="text-center align-middle text-secondary">Student 5</th>
         </tr>
     </tbody>
