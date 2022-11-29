@@ -70,5 +70,9 @@ route::get('/class-list', function(){
 route::get('/class-work', function(){
     return view('student.class-work');
 });
+route::get('/score', function(){
+    return view('student.students-scores');
+});
+
 
 require __DIR__.'/auth.php';
