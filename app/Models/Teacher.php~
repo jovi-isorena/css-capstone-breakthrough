@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $imageURL
  * @property string $created_at
  * @property string $updated_at
- * @property string $status
  * @property Assessment[] $assessments
  * @property Class[] $classes
  * @property ClassSubject[] $classSubjects
@@ -43,7 +42,7 @@ class Teacher extends Model
     /**
      * @var array
      */
-    protected $fillable = ['userID', 'firstName', 'middleName', 'lastName', 'suffix', 'position', 'employmentStatus', 'imageURL', 'created_at', 'updated_at', 'status'];
+    protected $fillable = ['userID', 'firstName', 'middleName', 'lastName', 'suffix', 'position', 'employmentStatus', 'imageURL', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

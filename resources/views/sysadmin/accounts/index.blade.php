@@ -1,20 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Accounts') }}
-        </h2>
+        <div class="d-flex justify-content-between">
+            <div class="col-md-6">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('Accounts') }}
+                </h2>
+
+            </div>
+            <div class="col-md-2">
+
+                <button class="btn btn-success justify-self-right" data-bs-toggle="modal" data-bs-target="#createSelect">
+                    Create Account
+                </button>
+            </div>
+        </div>
     </x-slot>
     <div class="py-12 container">
         <div class="my-5">
             <div class="row">
                 <div class="col-2">
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createAccount">
-                        Create Account
-                    </button>
-                    @include('sysadmin.accounts.partials.create')
+                    
+                    @include('sysadmin.accounts.partials.createSelect')
+                    @include('sysadmin.accounts.partials.createSysadmin')
+                    @include('sysadmin.accounts.partials.createTeacher')
+                    @include('sysadmin.accounts.partials.createStudent')
                 </div>
             </div>
         </div>
+        @include('components.toast')
+
         <div class="my-5">
             <table class="table text-center">
                 <thead>
@@ -41,5 +55,4 @@
             </table>
         </div>
     </div>
-    @include('components.toast')
 </x-app-layout>

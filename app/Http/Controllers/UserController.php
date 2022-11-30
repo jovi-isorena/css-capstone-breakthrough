@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Sysadmin;
+use App\Models\SchoolAdmin;
+use App\Models\Teacher;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::all();
         return view('sysadmin.accounts.index',[
             'users' => $users
         ]);
@@ -57,7 +60,7 @@ class UserController extends Controller
             $user = User::make([
                 'name' => $request->input('fname') . ' ' . $request->input('lname'),
                 'email' => $request->input('email'),
-                'password' => $plaintextPassword,
+                'password' => $hashedPassword,
                 'mandatoryChangePassword' => 1,
                 'role' => $request->input('role'),
                 'status' => 'active'
@@ -74,6 +77,87 @@ class UserController extends Controller
                 ]);
 
                 if($sysad->save()){
+                    return redirect(route('accounts'))->with('success','Account Created');
+                }
+            }
+        }
+        else if($request->input('role') === 'teacher'){
+            $request->validate([
+                'fname'=> 'required|max:255',
+                'mname'=> 'max:255',
+                'lname'=> 'required|max:255',
+                'suffix'=> 'max:5',
+                'email' => 'required|max:255|email|unique:users,email',
+                'position' => 'required|max:255',
+                'employmentStatus' => 'required|max:255'
+            ]);
+
+            //create random password
+            $plaintextPassword = Str::random(8);
+            $hashedPassword = Hash::make($plaintextPassword);
+            //create user record
+            $user = User::make([
+                'name' => $request->input('fname') . ' ' . $request->input('lname'),
+                'email' => $request->input('email'),
+                'password' => $hashedPassword,
+                'mandatoryChangePassword' => 1,
+                'role' => $request->input('role'),
+                'status' => 'active'
+            ]);
+            if($user->save()){
+                $teacher = Teacher::make([
+                    'userID' => $user->id, 
+                    'firstName' => $request->input('fname'), 
+                    'middleName' => $request->input('mname'), 
+                    'lastName' => $request->input('lname'), 
+                    'suffix' => $request->input('suffix'), 
+                    'position' => $request->input('position'), 
+                    'employmentStatus' =>  $request->input('employmentStatus'), 
+                    'imageURL' => '',
+                    'status' => 'active'
+                ]);
+
+                if($teacher->save()){
+                    return redirect(route('accounts'))->with('success','Account Created');
+                }
+            }
+        }
+        else if($request->input('role') === 'student'){
+            $request->validate([
+                'fname'=> 'required|max:255',
+                'mname'=> 'max:255',
+                'lname'=> 'required|max:255',
+                'suffix'=> 'max:5',
+                'email' => 'required|max:255|email|unique:users,email',
+                'gradeLevel' => 'required|min:1|max:12',
+                'gender' => 'required|max:255'
+            ]);
+            //create random password
+            $plaintextPassword = Str::random(8);
+            $hashedPassword = Hash::make($plaintextPassword);
+            //create user record
+            $user = User::make([
+                'name' => $request->input('fname') . ' ' . $request->input('lname'),
+                'email' => $request->input('email'),
+                'password' => $hashedPassword,
+                'mandatoryChangePassword' => 1,
+                'role' => $request->input('role'),
+                'status' => 'active'
+            ]);
+            if($user->save()){
+                $student = Student::make([
+                    'userID' => $user->id, 
+                    'firstName' => $request->input('fname'), 
+                    'middleName' => $request->input('mname'), 
+                    'lastName' => $request->input('lname'), 
+                    'suffix' => $request->input('suffix'), 
+                    'gender' =>  $request->input('gender'), 
+                    'gradeLevel' =>  $request->input('gradeLevel'), 
+                    'imageURL' => '',
+                    'status' => 'active'
+                ]);
+
+                if($student->save()){
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
