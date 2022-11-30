@@ -32,7 +32,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        if(auth()->user()->mandatoryChangePassword === 1){
+            return redirect(route('firstLogin'));
+        }else{
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+
     }
 
     /**
