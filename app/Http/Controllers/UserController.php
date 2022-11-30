@@ -10,6 +10,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewAccountMail;
 
 class UserController extends Controller
 {
@@ -77,6 +79,8 @@ class UserController extends Controller
                 ]);
 
                 if($sysad->save()){
+                    //send email to the registered email address of the user
+                    Mail::to($user)->send(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
@@ -118,6 +122,8 @@ class UserController extends Controller
                 ]);
 
                 if($teacher->save()){
+                    //send email to the registered email address of the user
+                    Mail::to($user)->send(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
@@ -158,6 +164,8 @@ class UserController extends Controller
                 ]);
 
                 if($student->save()){
+                    //send email to the registered email address of the user
+                    Mail::to($user)->send(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
