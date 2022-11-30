@@ -34,6 +34,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     /**
+     * The primary key for the model.
+     * 
+     * @var string
+     */
+    protected $primaryKey = 'id';
+    /**
      * @var array
      */
     protected $fillable = ['name', 'email', 'password', 'mandatoryChangePassword', 'lastLoginAttempt', 'loginAttempCount', 'lockedUntil', 'role', 'created_at', 'updated_at', 'status'];
