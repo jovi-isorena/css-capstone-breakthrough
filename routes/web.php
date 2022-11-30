@@ -24,6 +24,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//first login
+Route::get('test/first-login', [TestController::class, 'testfirstlogin'])->name('firstLogin');
 Route::middleware('auth')->group(function () {
     //user profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

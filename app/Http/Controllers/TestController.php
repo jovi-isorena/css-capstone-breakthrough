@@ -13,4 +13,8 @@ class TestController extends Controller
     public function sendMail(Request $request){
         Mail::to('jovito.isorena.jr@gmail.com')->send(new DemoMail('jovi'));
     }
+
+    public function testfirstlogin(){
+        return view('profile.first-login');
+    }
 }
