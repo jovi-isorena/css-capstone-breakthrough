@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\CurriculumController;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
@@ -47,6 +48,14 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/curriculum/{curriculum}', [CurriculumController::class, 'show'])->name('curriculumShow');
     Route::get('sysadmin/curriculum/{curriculum}/edit', [CurriculumController::class, 'edit'])->name('curriculumEdit');
     Route::put('sysadmin/curriculum/{curriculum}/update', [CurriculumController::class, 'update'])->name('curriculumUpdate');
+    
+    //schoolyear
+    Route::get('sysadmin/schoolYears', [SchoolYearController::class, 'index'])->name('schoolYears');
+    Route::get('sysadmin/schoolYear/create', [SchoolYearController::class, 'create'])->name('schoolYearCreate');
+    Route::post('sysadmin/schoolYear/store', [SchoolYearController::class, 'store'])->name('schoolYearStore');
+    Route::get('sysadmin/schoolYear/{schoolYear}', [SchoolYearController::class, 'show'])->name('schoolYearShow');
+    Route::get('sysadmin/schoolYear/{schoolYear}/edit', [SchoolYearController::class, 'edit'])->name('schoolYearEdit');
+    Route::put('sysadmin/schoolYear/{schoolYear}/update', [SchoolYearController::class, 'update'])->name('schoolYearUpdate');
     
     // ROUTES FOR TEACHERS
     // route for teacher homepage

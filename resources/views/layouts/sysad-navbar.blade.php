@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('curriculums')" :active="request()->routeIs('curriculums')">
                         {{ __('Curriculums') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('schoolYears')" :active="request()->routeIs('schoolYears')">
+                        {{ __('School Years') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('classes')">
                         {{ __('Classes') }}
                     </x-nav-link>
