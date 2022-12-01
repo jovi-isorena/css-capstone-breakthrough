@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CurriculumController;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
@@ -56,6 +57,14 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/schoolYear/{schoolYear}', [SchoolYearController::class, 'show'])->name('schoolYearShow');
     Route::get('sysadmin/schoolYear/{schoolYear}/edit', [SchoolYearController::class, 'edit'])->name('schoolYearEdit');
     Route::put('sysadmin/schoolYear/{schoolYear}/update', [SchoolYearController::class, 'update'])->name('schoolYearUpdate');
+    
+    //classes
+    Route::get('sysadmin/sections', [SectionController::class, 'index'])->name('sections');
+    Route::get('sysadmin/section/create', [SectionController::class, 'create'])->name('sectionCreate');
+    Route::post('sysadmin/section/store', [SectionController::class, 'store'])->name('sectionStore');
+    Route::get('sysadmin/section/{section}', [SectionController::class, 'show'])->name('sectionShow');
+    Route::get('sysadmin/section/{section}/edit', [SectionController::class, 'edit'])->name('sectionEdit');
+    Route::put('sysadmin/section/{section}/update', [SectionController::class, 'update'])->name('sectionUpdate');
     
     // ROUTES FOR TEACHERS
     // route for teacher homepage
