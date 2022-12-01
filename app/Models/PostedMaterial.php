@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
- * @property ClassSubject $classSubject
+ * @property SectionSubject $sectionSubject
  * @property LearningMaterial $learningMaterial
  */
 class PostedMaterial extends Model
@@ -38,9 +38,9 @@ class PostedMaterial extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function classSubject()
+    public function sectionSubject()
     {
-        return $this->belongsTo('App\Models\ClassSubject', 'subjectID', 'classSubjectID');
+        return $this->belongsTo('App\Models\SectionSubject', 'subjectID', 'classSubjectID');
     }
 
     /**

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
- * @property ClassSubject $classSubject
+ * @property SectionSubject $sectionSubject
  * @property Assessment $assessment
  * @property Submission[] $submissions
  */
@@ -41,9 +41,9 @@ class PostedAssessment extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function classSubject()
+    public function sectionSubject()
     {
-        return $this->belongsTo('App\Models\ClassSubject', 'subjectID', 'classSubjectID');
+        return $this->belongsTo('App\Models\SectionSubject', 'subjectID', 'classSubjectID');
     }
 
     /**

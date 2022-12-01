@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $subjectID
+ * @property integer $classSubjectID
  * @property integer $teacherID
  * @property integer $classID
  * @property string $name
  * @property integer $gradeLevel
  * @property string $status
- * @property Class $class
  * @property Teacher $teacher
+ * @property Class $class
  * @property Conference[] $conferences
  * @property PostedAssessment[] $postedAssessments
  * @property PostedMaterial[] $postedMaterials
@@ -31,20 +31,12 @@ class ClassSubject extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'subjectID';
+    protected $primaryKey = 'classSubjectID';
 
     /**
      * @var array
      */
     protected $fillable = ['teacherID', 'classID', 'name', 'gradeLevel', 'status'];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function class()
-    {
-        return $this->belongsTo('App\Models\Class', 'classID', 'classID');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -55,11 +47,19 @@ class ClassSubject extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function class()
+    {
+        return $this->belongsTo('App\Models\Class', 'classID', 'classID');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function conferences()
     {
-        return $this->hasMany('App\Models\Conference', 'subjectID', 'subjectID');
+        return $this->hasMany('App\Models\Conference', 'subjectID', 'classSubjectID');
     }
 
     /**
@@ -67,7 +67,7 @@ class ClassSubject extends Model
      */
     public function postedAssessments()
     {
-        return $this->hasMany('App\Models\PostedAssessment', 'subjectID', 'subjectID');
+        return $this->hasMany('App\Models\PostedAssessment', 'subjectID', 'classSubjectID');
     }
 
     /**
@@ -75,6 +75,6 @@ class ClassSubject extends Model
      */
     public function postedMaterials()
     {
-        return $this->hasMany('App\Models\PostedMaterial', 'subjectID', 'subjectID');
+        return $this->hasMany('App\Models\PostedMaterial', 'subjectID', 'classSubjectID');
     }
 }

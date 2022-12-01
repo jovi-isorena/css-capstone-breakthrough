@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $classID
+ * @property integer $sectionID
  * @property string $name
  * @property string $gradeLevel
  * @property integer $schoolYearID
@@ -13,39 +13,31 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
- * @property Schoolyear $schoolyear
  * @property Teacher $teacher
- * @property ClassStudent[] $classStudents
- * @property ClassSubject[] $classSubjects
+ * @property Schoolyear $schoolyear
+ * @property SectionStudent[] $sectionStudents
+ * @property SectionSubject[] $sectionSubjects
  */
-class Class extends Model
+class Section extends Model
 {
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = 'class';
+    protected $table = 'section';
 
     /**
      * The primary key for the model.
      * 
      * @var string
      */
-    protected $primaryKey = 'classID';
+    protected $primaryKey = 'sectionID';
 
     /**
      * @var array
      */
     protected $fillable = ['name', 'gradeLevel', 'schoolYearID', 'teacherID', 'created_at', 'updated_at', 'status'];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function schoolyear()
-    {
-        return $this->belongsTo('App\Models\Schoolyear', 'schoolYearID', 'schoolYearID');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -56,18 +48,26 @@ class Class extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function classStudents()
+    public function schoolyear()
     {
-        return $this->hasMany('App\Models\ClassStudent', 'classID', 'classID');
+        return $this->belongsTo('App\Models\Schoolyear', 'schoolYearID', 'schoolYearID');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function classSubjects()
+    public function sectionStudents()
     {
-        return $this->hasMany('App\Models\ClassSubject', 'classID', 'classID');
+        return $this->hasMany('App\Models\SectionStudent', 'sectionID', 'sectionID');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sectionSubjects()
+    {
+        return $this->hasMany('App\Models\SectionSubject', 'sectionID', 'sectionID');
     }
 }

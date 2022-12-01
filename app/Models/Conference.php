@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property string $status
  * @property Teacher $teacher
- * @property ClassSubject $classSubject
+ * @property SectionSubject $sectionSubject
  * @property ConferenceSession[] $conferenceSessions
  */
 class Conference extends Model
@@ -48,9 +48,9 @@ class Conference extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function classSubject()
+    public function sectionSubject()
     {
-        return $this->belongsTo('App\Models\ClassSubject', 'subjectID', 'classSubjectID');
+        return $this->belongsTo('App\Models\SectionSubject', 'subjectID', 'classSubjectID');
     }
 
     /**
