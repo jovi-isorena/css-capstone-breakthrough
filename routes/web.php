@@ -3,8 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\CurriculumController;
+use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +35,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //end user profile
 
+    //ROUTES FOR SYSADMIN
     //accounts
     Route::get('sysadmin/accounts', [UserController::class, 'index'])->name('accounts');
     Route::post('sysadmin/account', [UserController::class, 'store'])->name('accountStore');
     
+    //curriculum
+    Route::get('sysadmin/curriculums', [CurriculumController::class, 'index'])->name('curriculums');
+    Route::get('sysadmin/curriculum/create', [CurriculumController::class, 'create'])->name('curriculumCreate');
+    Route::post('sysadmin/curriculum/store', [CurriculumController::class, 'store'])->name('curriculumStore');
+    Route::get('sysadmin/curriculum/{curriculum}', [CurriculumController::class, 'show'])->name('curriculumShow');
+    Route::get('sysadmin/curriculum/{curriculum}/edit', [CurriculumController::class, 'edit'])->name('curriculumEdit');
+    Route::put('sysadmin/curriculum/{curriculum}/update', [CurriculumController::class, 'update'])->name('curriculumUpdate');
     
     // ROUTES FOR TEACHERS
     // route for teacher homepage

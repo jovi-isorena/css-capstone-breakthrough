@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
+use App\Models\CurriculumSubject;
 use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
@@ -14,7 +15,10 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        //
+        $curriculums = Curriculum::all();
+        return view('sysadmin.curriculum.index', [
+            'curriculums' => $curriculums
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class CurriculumController extends Controller
      */
     public function create()
     {
-        //
+        return view('sysadmin.curriculum.create');
     }
 
     /**
@@ -35,7 +39,37 @@ class CurriculumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'name' => 'required|max:255',
+            'gradeLevel' => 'required|min:1|max:12',
+            'subjectName.*' => 'required|max:255',
+            'subjectShorthand.*' => 'required|max:255',
+            'subjectDescription.*' => 'required|max:255'
+        ]);
+
+        $curriculum = Curriculum::make([
+            'name' => $request->input('name'), 
+            'gradeLevel' => $request->input('gradeLevel'), 
+            'status' => 'active'
+        ]);
+
+        if($curriculum->save()){
+            $subjectCount = count($request->input('subjectName'));
+            for ($i=0; $i < $subjectCount; $i++) { 
+                $subject = CurriculumSubject::make([
+                    'curriculumID' => $curriculum->curriculumID, 
+                    'name' => $request->input('subjectName')[$i], 
+                    'subjectShorthand' => $request->input('subjectShorthand')[$i], 
+                    'description' => $request->input('subjectDescription')[$i], 
+                    'status' => 'active'
+                ]);
+                if(!$subject->save()){
+                    return back()->with('danger','Error in saving subject: ['.$subject->name.']');
+                }
+            }
+            return back()->with('success', 'Curriculum saved.');
+        }
     }
 
     /**
@@ -46,7 +80,10 @@ class CurriculumController extends Controller
      */
     public function show(Curriculum $curriculum)
     {
-        //
+        return view('sysadmin.curriculum.show',[
+            'curriculum' => $curriculum
+        ]);
+        
     }
 
     /**
@@ -57,7 +94,10 @@ class CurriculumController extends Controller
      */
     public function edit(Curriculum $curriculum)
     {
-        //
+        return view('sysadmin.curriculum.edit',[
+            'curriculum' => $curriculum
+        ]);
+        
     }
 
     /**

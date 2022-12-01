@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $curriculumID
  * @property string $name
  * @property string $subjectShorthand
- * @property string $description
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
@@ -34,7 +33,7 @@ class CurriculumSubject extends Model
     /**
      * @var array
      */
-    protected $fillable = ['curriculumID', 'name', 'subjectShorthand', 'description', 'created_at', 'updated_at', 'status'];
+    protected $fillable = ['curriculumID', 'name', 'subjectShorthand', 'created_at', 'updated_at', 'status'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

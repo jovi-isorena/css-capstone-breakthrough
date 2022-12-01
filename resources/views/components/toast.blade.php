@@ -1,11 +1,3 @@
-<div class="toast align-items-center text-bg-success border-0 position-absolute bottom-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast" data-bs-autohide="true" data-bs-delay="5000">
-    <div class="d-flex">
-        <div class="toast-body">
-            Success:
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto text-white" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-</div>
 {{-- success toast --}}
 @if (session()->has('success'))
     <div class="toast align-items-center text-bg-success border-0 position-absolute bottom-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast" data-bs-autohide="true" data-bs-delay="5000">
@@ -51,7 +43,7 @@
 
 
 
-@section('scripts')
+@section('toastscripts')
     
     <script>
         const toastDiv = document.getElementById('liveToast')

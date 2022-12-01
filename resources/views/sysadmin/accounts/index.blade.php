@@ -16,6 +16,8 @@
         </div>
     </x-slot>
     <div class="py-12 container">
+        @include('components.toast')
+
         <div class="my-5">
             <div class="row">
                 <div class="col-2">
@@ -27,7 +29,6 @@
                 </div>
             </div>
         </div>
-        @include('components.toast')
 
         <div class="my-5">
             <table class="table text-center">
