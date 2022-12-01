@@ -40,68 +40,48 @@ Route::middleware('auth')->group(function () {
 });
 
 // route for teacher homepage
-Route::get('/teacher', function () {
-    return view('teacher-home-page/index');
-});
+// Route::get('/teacher', function () {
+//     return view('teacher/home-page/index');
+// });
 
 // route for teacher login
-Route::get('/teacher-login', function () {
-    return view('teacher-login-page/index');
-});
+// Route::get('/teacher/login', function () {
+//     return view('teacher/login-page/index');
+// });
 
 
 // route for teacher classes
-Route::get('/teacher-classes', function () {
-    return view('teacher-classes-page/index');
-});
+Route::get('/teacher/classes', [TeacherController::class, 'classes'])->name('teacherClasses');
 
 // route for teacher class stream page
-Route::get('/teacher-class-stream', function () {
-    return view('teacher-class-stream-page/index');
-});
+Route::get('/teacher/class-stream', [TeacherController::class, 'classStream'])->name('teacherClassStream');
 
 // route for teacher class activiy page
-Route::get('/teacher-class-activity', function () {
-    return view('teacher-class-activity-page/index');
-});
+Route::get('/teacher/class-activity', [TeacherController::class, 'classActivity'])->name('teacherClassActivity');
 
 // route for teacher class list detail page
-Route::get('/teacher-class-list-detail', function () {
-    return view('teacher-class-list-detail-page/index');
-});
+Route::get('/teacher/class-list-detail', [TeacherController::class, 'classListDetail'])->name('teacherClassListDetail');
 
 // route for teacher class subject score page
-Route::get('/teacher-subject-score', function () {
-    return view('teacher-subject-score-page/index');
-});
+Route::get('/teacher/subject-score', [TeacherController::class, 'subjectScore'])->name('teacherSubjectScore');
 
 // route for teacher posted task page
-Route::get('/teacher-posted-task', function () {
-    return view('teacher-posted-task-page/index');
-});
+Route::get('/teacher/posted-task', [TeacherController::class, 'postedTask'])->name('teacherPostedTask');
 
 // route for teacher posted task subject page
-Route::get('/teacher-posted-task-subject', function () {
-    return view('teacher-posted-task-subject-page/index');
-});
+Route::get('/teacher/posted-task-subject', [TeacherController::class, 'postedTaskSubject'])->name('teacherPostedTaskSubject');
 
 // route for teacher posted task section list page
-Route::get('/teacher-posted-task-section', function () {
-    return view('teacher-posted-task-section-list-page/index');
-});
+Route::get('/teacher/posted-task-section', [TeacherController::class, 'postedTaskSection'])->name('teacherPostedTaskSection');
 
 // route for teacher posted task subject student
-Route::get('/teacher-posted-task-subject-student', function () {
-    return view('teacher-posted-task-subject-student-page/index');
-});
+Route::get('/teacher/posted-task-subject-student', [TeacherController::class, 'postedTaskSubjectStudent'])->name('teacherPostedTaskSubjectStudent');
 
 // route for teacher create task page
-Route::get('/teacher-create-task', function () {
-    return view('teacher-create-task-page/index');
-});
+Route::get('/teacher/create-task', [TeacherController::class, 'createTask'])->name('teacherCreateTask');
 
 // route for teacher create task page
-Route::get('/teacher-profile', function () {
-    return view('teacher-profile-page/index');
-});
+// Route::get('/teacher/profile', function () {
+//     return view('teacher/profile-page/index');
+// });
 require __DIR__.'/auth.php';
