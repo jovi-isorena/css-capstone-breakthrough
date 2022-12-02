@@ -1,5 +1,14 @@
-@extends('student.students-layout')
-@section('content')
+@extends('student.student-subject-layout')
+@section('contents')
+<section id="home">
+            <ul id="menu">
+                <li class="unactive"><a href="class-stream">Class Stream</a></li>
+                <li class="unactive"><a href="class-list">Class List</a><li>
+                <li class="unactive"><a href="class-work">Class Work</a></li>
+                <li class="active"><a href="scores">Scores</a></li>
+
+            </ul>
+</section>
 <table class="table">
   <thead class="thead-dark">
     <tr>

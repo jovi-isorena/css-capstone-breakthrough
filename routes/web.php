@@ -32,7 +32,7 @@ Route::get('/home', function (){
     return view('student.Homepage');
 });
 route::get('/loginn', function(){
-    return view('student.login');
+    return view('loginn.loginn');
 });
 route::get('/subjects', function(){
     return view('student.subject');
@@ -72,6 +72,12 @@ route::get('/class-work', function(){
 });
 route::get('/score', function(){
     return view('student.students-scores');
+});
+route::get('/student-subject', function(){
+    return view('student.student-subject-layout');
+});
+route::get('/student-class', function(){
+    return view('student.student-class-layout');
 });
 
 
