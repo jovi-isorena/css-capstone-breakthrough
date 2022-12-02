@@ -31,7 +31,7 @@ class SectionSubject extends Model
      * 
      * @var string
      */
-    protected $primaryKey = 'classSubjectID';
+    protected $primaryKey = 'sectionSubjectID';
 
     /**
      * @var array

@@ -61,33 +61,61 @@
                   <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                             Subjects
+                            <span class=" text-muted ml-2 text-sm">
+                                Curriculum: [ ]
+                            </span>
                         </button>
+                        
                   </h2>
                   <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <table class="table text-center">
-                                <thead>
-                                    <tr>
-                                        <th>Subject Name</th>
-                                        <th>Assigned Teacher</th>
-                                        <th>Day</th>
-                                        <th>Start Time</th>
-                                        <th>End Time</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($section->sectionSubjects as $subject)
-                                    <tr>
-                                        <td>{{$subject->name}}</td>
-                                        <td>{{$subject->teacher}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    
-                                @endforeach
-                                </tbody>
-                            </table>
+                            <form action="{{ route('sectionUpdateTeachers') }}" method="post">
+                                @csrf
+                                @method('put')
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Subject Name</th>
+                                            <th>Assigned Teacher</th>
+                                            <th>Day</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($section->sectionSubjects as $key => $subject)
+                                        <input type="hidden" name="sectionSubjectID[{{$key}}]" value={{$subject->sectionSubjectID}}>
+                                        <tr>
+                                            <td>{{$subject->name}}</td>
+                                            <td>
+                                                <select name="sectionSubjectTeacher[{{$subject->sectionSubjectID}}]" id="sectionSubjectTeacher[{{$subject->sectionSubjectID}}]">
+                                                    <option value="" disabled hidden {{ $subject->teacherID ? '' : 'selected' }} >Select</option>
+                                                    @foreach ($teachers as $teacher)
+                                                        <option value="{{ $teacher->teacherID }}" {{ $subject->teacherID === $teacher->teacherID ? 'selected' : '' }}>{{ $teacher->firstName . ' ' . $teacher->lastName }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select name="" id="">
+                                                    <option value="">Monday</option>
+                                                    <option value="">Tuesday</option>
+                                                    <option value="">Wednesday</option>
+                                                    <option value="">Thursday</option>
+                                                    <option value="">Friday</option>
+                                                    <option value="">Saturday</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="time" name="" id=""></td>
+                                            <td><input type="time" name="" id=""></td>
+                                        </tr>
+                                        
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                                <div >
+                                    <button type="submit" class="btn btn-success bg-success">Save Subject List</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

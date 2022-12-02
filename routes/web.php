@@ -7,6 +7,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SectionStudentController;
+use App\Http\Controllers\SectionSubjectController;
 use App\Http\Controllers\CurriculumController;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
@@ -72,6 +73,8 @@ Route::middleware('auth')->group(function () {
     // section students
     Route::post('sysadmin/sectionStudent/store', [SectionStudentController::class, 'store'])->name('sectionStudentStore');
     
+    // section subjects
+    Route::put('sysadmin/sectionSubject/teachers/update', [SectionSubjectController::class, 'updateTeachers'])->name('sectionUpdateTeachers');
 
     // ROUTES FOR TEACHERS
     // route for teacher homepage

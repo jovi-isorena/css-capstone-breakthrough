@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <div class="col-md-1 border-2">
+                <a href="{{ route('curriculums') }}" class="btn btn-dark"><i class="fas fa-chevron-left"></i></a>
+                
+            </div>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Create Curriculum') }}
             </h2>

@@ -58,7 +58,7 @@ class SectionController extends Controller
         // check if curriculum exists
         if($curriculum){
             $quan = intval($request->input('quantity'));
-            for ($i=0; $i <= $quan+1; $i++) { 
+            for ($i=0; $i < $quan; $i++) { 
                 // create individual section
                 $section = Section::make([
                     'name' => null, 
