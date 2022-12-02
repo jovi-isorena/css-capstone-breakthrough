@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use App\Models\SectionSubject;
 use App\Models\SchoolYear;
+use App\Models\Teacher;
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
 
@@ -60,7 +61,7 @@ class SectionController extends Controller
             for ($i=0; $i <= $quan+1; $i++) { 
                 // create individual section
                 $section = Section::make([
-                    'name' => "Unset", 
+                    'name' => null, 
                     'gradeLevel' => $request->input('gradeLevel'), 
                     'schoolYearID' => $request->input('schoolYear'), 
                     'teacherID' => null, 
@@ -98,7 +99,11 @@ class SectionController extends Controller
      */
     public function show(Section $section)
     {
-        //
+        $teachers = Teacher::where('status','active')->get();
+        return view('sysadmin.section.show',[
+            'section' => $section,
+            'teachers' => $teachers
+        ]);
     }
 
     /**
@@ -122,6 +127,26 @@ class SectionController extends Controller
     public function update(Request $request, Section $section)
     {
         //
+    }
+
+    /**
+     * Update the adviser of the section.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Section  $section
+     * @return \Illuminate\Http\Response
+     */
+    public function updateAdviser(Request $request, Section $section)
+    {
+        $request->validate([
+            'adviser' => 'required'
+        ]);
+
+        if($section->update([
+            'teacherID' => $request->input('adviser')
+        ])){
+            return back()->with('success', 'Adviser assigned.');
+        }
     }
 
     /**

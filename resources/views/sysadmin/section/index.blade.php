@@ -54,12 +54,30 @@
                             </thead>
                             <tbody>
                                 @foreach ($sections->where('gradeLevel', $i) as $section)
-                                    <tr>
-                                        <td>{{ $section->name }}</td>
-                                        <td>{{ $section->teacher}}</td>
-                                        <td>{{ $section->sectionStudents->count()}}</td>
+                                    <tr >
                                         <td>
-                                            <a href="#" class="btn btn-primary">Manage</a>
+                                            @if ($section->name)
+                                                {{ $section->name }}
+                                            @else
+                                                <span class="badge bg-danger ">Unset</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($section->teacher)
+                                                {{ $section->teacher->firstName . ' ' . $section->teacher->lastName }}
+                                            @else
+                                                <span class="badge bg-danger ">Unset</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($section->sectionStudents->count() > 0)
+                                                {{ $section->sectionStudents->count() }}
+                                            @else
+                                                <span class="badge bg-danger ">No students</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('sectionShow', $section->sectionID)}}" class="btn btn-primary">Manage</a>
                                             <a href="#" class="btn btn-danger">Archive</a>
                                         </td>
                                     </tr>

@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/section/{section}', [SectionController::class, 'show'])->name('sectionShow');
     Route::get('sysadmin/section/{section}/edit', [SectionController::class, 'edit'])->name('sectionEdit');
     Route::put('sysadmin/section/{section}/update', [SectionController::class, 'update'])->name('sectionUpdate');
+    Route::put('sysadmin/section/{section}/updateAdviser', [SectionController::class, 'updateAdviser'])->name('sectionUpdateAdviser');
     
     // ROUTES FOR TEACHERS
     // route for teacher homepage
