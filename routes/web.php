@@ -59,13 +59,14 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/schoolYear/{schoolYear}/edit', [SchoolYearController::class, 'edit'])->name('schoolYearEdit');
     Route::put('sysadmin/schoolYear/{schoolYear}/update', [SchoolYearController::class, 'update'])->name('schoolYearUpdate');
     
-    //classes
+    //sections
     Route::get('sysadmin/sections', [SectionController::class, 'index'])->name('sections');
     Route::get('sysadmin/section/create', [SectionController::class, 'create'])->name('sectionCreate');
     Route::post('sysadmin/section/store', [SectionController::class, 'store'])->name('sectionStore');
     Route::get('sysadmin/section/{section}', [SectionController::class, 'show'])->name('sectionShow');
     Route::get('sysadmin/section/{section}/edit', [SectionController::class, 'edit'])->name('sectionEdit');
     Route::put('sysadmin/section/{section}/update', [SectionController::class, 'update'])->name('sectionUpdate');
+    Route::put('sysadmin/section/{section}/updateName', [SectionController::class, 'updateName'])->name('sectionUpdateName');
     Route::put('sysadmin/section/{section}/updateAdviser', [SectionController::class, 'updateAdviser'])->name('sectionUpdateAdviser');
     
     // section students

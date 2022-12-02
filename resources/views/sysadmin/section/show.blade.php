@@ -6,11 +6,22 @@
                 
             </div>
             <div class="col-md-6">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Section: ') }}
-                    <input type="text" name="name" id="name" value="{{ $section->name }}" placeholder="<NO NAME>" disabled>
-                    <button class="btn btn-dark bg-dark"><i class="bi bi-pencil-square"></i></button>
-                </h2>
+                <form action="{{ route('sectionUpdateName', $section) }}" method="post">
+                    @csrf
+                    @method('put')
+                    <div class="font-semibold text-xl text-gray-800 leading-tight d-flex align-items-center">
+                        {{ __('Section: ') }}
+                        <div class="px-3" id="divName" style="display: block">{{ $section->name ?? "<NO NAME>" }}</div>
+                        <input type="text" class="ml-2" name="name" id="name" value="{{ $section->name }}" placeholder="{{ $section->name ?? '<NO NAME>' }}" style="display: none">
+                        <span>
+                            <button type="button" id="editBtn" style="display:block" class="btn btn-dark bg-dark" onclick="editMode(true)"><i class="bi bi-pencil-square"></i></button>
+                        </span>
+                        <span id="editControl" style="display:none">
+                            <button type="submit" class="btn btn-success bg-success mx-2"><i class="bi bi-check-lg"></i></button>
+                            <button type="button" class="btn btn-danger bg-danger" onclick="editMode(false)"><i class="bi bi-x"></i></button>
+                        </span>
+                    </div>
+                </form>
 
             </div>
             
@@ -112,23 +123,26 @@
                                                 <th>Middle Name</th>
                                                 <th>Last Name</th>
                                                 <th>Gender</th>
-                                                <th>Action</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="studentList">
-                                            {{-- <tr id="idhere">
-                                                <input type="hidden" name="studentID" value="0">
-                                                <td>ID</td>
-                                                <td>Name</td>
-                                                <td>Name</td>
-                                                <td>Name</td>
-                                                <td>Gender</td>
-                                                <td>
-                                                    <div class="align-items-center ">
-                                                        <button type="button" class="btn-close text-danger" data-target="#subject-0" aria-label="Close" onclick="document.getElementById('idhere').remove()"><i class="fas fa-times"></i></button>
-                                                    </div>
-                                                </td>
-                                            </tr> --}}
+                                            @foreach ($section->sectionStudents as $student)
+                                                <tr id="{{ $student->student->studentID }}">
+                                                    <input type="hidden" name="studentID" value="0">
+                                                    <td>{{ $student->student->studentID }}</td>
+                                                    <td>{{ $student->student->firstName }}</td>
+                                                    <td>{{ $student->student->middleName }}</td>
+                                                    <td>{{ $student->student->lastName }}</td>
+                                                    <td>{{ $student->student->gender }}</td>
+                                                    <td>
+                                                        <div class="align-items-center ">
+                                                            <button type="button" class="btn-close text-danger" data-target="#subject-0" aria-label="Close" onclick="document.getElementById('idhere').remove()"><i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -195,6 +209,24 @@
                 // clear result box
                 document.getElementById('searchResult').innerHTML = '';
             }
+
+            function editMode(bool){
+                // edit mode true = hide divname, edit button; show input name, edit control
+                if(bool){
+                    document.getElementById('editControl').style.display = 'flex';
+                    document.getElementById('name').style.display = 'block';
+                    document.getElementById('editBtn').style.display = 'none';
+                    document.getElementById('divName').style.display = 'none';
+                    
+                }else{
+                    document.getElementById('editControl').style.display = 'none';
+                    document.getElementById('name').style.display = 'none';
+                    document.getElementById('editBtn').style.display = 'block';
+                    document.getElementById('divName').style.display = 'block';
+                    
+                }
+            }
+
         </script>
     @endsection
 </x-app-layout>

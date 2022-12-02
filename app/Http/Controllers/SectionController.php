@@ -136,6 +136,21 @@ class SectionController extends Controller
      * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
+    public function updateName(Request $request, Section $section){
+        $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        if($section->update([
+            'name' => $request->input('name')
+        ])){
+            return back()->with('success', 'Section name updated.');
+        }else{
+            return back()->with('danger', 'Section name not updated.');
+        }
+            
+    }
+
     public function updateAdviser(Request $request, Section $section)
     {
         $request->validate([
@@ -146,6 +161,8 @@ class SectionController extends Controller
             'teacherID' => $request->input('adviser')
         ])){
             return back()->with('success', 'Adviser assigned.');
+        }else{
+            return back()->with('danger', 'Adviser not assigned.');
         }
     }
 
