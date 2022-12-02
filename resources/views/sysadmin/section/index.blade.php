@@ -59,14 +59,14 @@
                                             @if ($section->name)
                                                 {{ $section->name }}
                                             @else
-                                                <span class="badge bg-danger ">Unset</span>
+                                                <span class="badge bg-danger ">Not Set</span>
                                             @endif
                                         </td>
                                         <td>
                                             @if ($section->teacher)
                                                 {{ $section->teacher->firstName . ' ' . $section->teacher->lastName }}
                                             @else
-                                                <span class="badge bg-danger ">Unset</span>
+                                                <span class="badge bg-danger ">Not Set</span>
                                             @endif
                                         </td>
                                         <td>
