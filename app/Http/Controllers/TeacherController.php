@@ -31,6 +31,25 @@ class TeacherController extends Controller
 
     }
 
+    public function classshow(Section $section)
+    {
+        $sectionID = $section->sectionID;
+        $students = DB::table('Section_Student')
+        ->join('Student', function($join) use ($sectionID)
+        {
+            $join->on('Section_Student.studentID', '=', 'Student.studentID')
+                 ->where('Section_Student.sectionID', '=', $sectionID);
+        })
+        ->get();
+
+        return view('teacher.class-stream-page.index',[
+            'section' => $section,
+            'students' => $students
+
+        ]);
+
+    }
+
     public function classStream(){
         return view('teacher.class-stream-page.index');
 
