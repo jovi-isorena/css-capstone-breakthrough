@@ -1,5 +1,12 @@
-@extends('/layouts/layout-teacher')
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <div class="d-flex justify-content-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Class-Stream') }}
+            </h2>
+        </div>
+    </x-slot>
+
 
 <div class="container mt-5">
 
@@ -16,6 +23,23 @@
     {{-- Tab content --}}
     <div class="tab-content py-3 px-3 border border-1" id="a1">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="row">
+                <div class="col">
+            <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
+                Section 1 - Year 1
+               </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
+                    Section 2 - Year 2
+                   </button>
+            </div>
+        </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             @foreach ( $students as $student)
             <div class="row">
                 <div class="col">
@@ -31,9 +55,9 @@
                       </div>
                       <div class="ms-3">
                         <h5><strong>
-                        {{ $student->firstName }}
+                        {{ $student->firstName .' '.$student->middleName.' '.$student->lastName }}
                         </strong></h5>
-                        <p class="small mb-0">Students Name/Email</p>
+                        <p class="small mb-0">{{ $student->gradeLevel }}</p>
                       </div>
                     </div>
                   </div>
@@ -93,4 +117,4 @@
     </div>
 </div>
 
-@endsection
+</x-app-layout>

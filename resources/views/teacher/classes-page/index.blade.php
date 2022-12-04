@@ -33,7 +33,9 @@
                     <p style="margin: 0;">
                         {{ $SectionSubject->gradeLevel }}
                         <span class="ms-3">
-                            {{ $SectionSubject->sectionStudent->distinct()->count('sectionID'); }}
+
+
+                           {{ $SectionSubject->section->sectionStudents->count() }}
 
                         </span>
 
