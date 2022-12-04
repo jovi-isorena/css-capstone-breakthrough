@@ -15,39 +15,36 @@
 
     {{-- Tab content --}}
     <div class="tab-content py-3 px-3 border border-1" id="a1">
-        <div class="tab-pane fade  show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="row">
-                    <div class="col">
-                    <button class="btn btn-primary btn-lg" style="width: 200px;border: 1px;">
-                        Join Meeting
-                    </button>
-                </div>
-                <div class="col">
-                   <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;">
-                    Write Post
-                   </button>
-                   <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;">
-                    Post 1
-                   </button>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            @foreach ( $students as $student)
             <div class="row">
                 <div class="col">
-            <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                Section 1 - Year 1
-               </button>
+                    @if ($student->sectionID)
+            <div class="card mb-3 p-4">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <div>
+                        <img
+                          src="{{ URL('images/profile.png') }}"
+                          class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
+                      </div>
+                      <div class="ms-3">
+                        <h5><strong>
+                        {{ $student->firstName }}
+                        </strong></h5>
+                        <p class="small mb-0">Students Name/Email</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @endif
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                    Section 2 - Year 2
-                   </button>
-            </div>
-        </div>
+        @endforeach
     </div>
+
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
             <div class="row">
                 <div class="col">
