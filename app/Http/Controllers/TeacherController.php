@@ -15,19 +15,19 @@ use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
-    public function classes(){
-         //Get teacher logged in ID
-         $id = Auth::id();
-         $teacherID = Teacher::where('userID', $id)->value('teacherID');
-         $SectionSubjects = SectionSubject::where('teacherID', $teacherID)->get(['sectionID','gradeLevel','name']);
-         $teacherSectionCounts = SectionSubject::all()->count();
-         return view('teacher.classes-page.index',[
-             'userteacherID' => $id,
-             'teacherSectionCounts' => $teacherSectionCounts,
-             'SectionSubjects' => $SectionSubjects,
-             'teacherID' => $teacherID
+    public function classes(Request $request){
+        //Get teacher logged in ID
+        $id = Auth::id();
+        $teacherID = Teacher::where('userID', $id)->value('teacherID');
+        $SectionSubjects = SectionSubject::where('teacherID', $teacherID)->get(['sectionID','gradeLevel','name']);
+        $teacherSectionCounts = SectionSubject::all()->count();
+        return view('teacher.classes-page.index',[
+            'userteacherID' => $id,
+            'teacherSectionCounts' => $teacherSectionCounts,
+            'SectionSubjects' => $SectionSubjects,
+            'teacherID' => $teacherID
 
-         ]);
+        ]);
 
     }
 
