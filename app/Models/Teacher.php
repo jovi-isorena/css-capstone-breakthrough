@@ -28,14 +28,14 @@ class Teacher extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'teacher';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'teacherID';
@@ -90,6 +90,14 @@ class Teacher extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'userID');
+        return $this->belongsTo('App\Models\User', 'userID', 'userID');
+    }
+
+       /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function postthread()
+    {
+        return $this->belongsTo('App\Models\PostThread', 'userID','');
     }
 }

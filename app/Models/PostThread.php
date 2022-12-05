@@ -17,14 +17,14 @@ class PostThread extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'post-thread';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'postID';
@@ -33,4 +33,22 @@ class PostThread extends Model
      * @var array
      */
     protected $fillable = ['userID', 'sectionSubjectID', 'content', 'create_at', 'updated_at', 'status'];
+
+
+      /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function teacher()
+    {
+        return $this->belongsTo('App\Models\Teacher', 'teacherID', 'teacherID');
+    }
+
+      /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function sectionSubject()
+    {
+        return $this->belongsTo('App\Models\SectionSubject', 'sectionSubjectID', 'sectionSubjectID');
+    }
+
 }

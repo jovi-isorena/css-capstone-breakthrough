@@ -82,4 +82,13 @@ class SectionSubject extends Model
     {
         return $this->belongsTo('App\Models\SectionStudent', 'sectionID', 'sectionID');
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function postthread()
+    {
+        return $this->belongsTo('App\Models\PostThread', 'sectionSubjectID', 'sectionSubjectID');
+    }
 }
