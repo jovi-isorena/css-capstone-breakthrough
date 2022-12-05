@@ -94,7 +94,10 @@ Route::middleware('auth')->group(function () {
     // route for teacher class stream page
     Route::get('/teacher/class-stream', [TeacherController::class, 'classStream'])->name('teacherClassStream');
 
-    //Show selected section
+    // route for teacher add post
+    Route::put('/teacher/class-steam/{section}/addpost', [TeacherController::class, 'addpost'])->name('teacherAddpost');
+
+    // route for Show selected section
     Route::get('/teacher/class-stream/{section}', [TeacherController::class, 'classshow'])->name('teacherstudentshow');
 
     // route for teacher class activiy page

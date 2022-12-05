@@ -50,6 +50,22 @@ class TeacherController extends Controller
 
     }
 
+    public function addpost(Request $request, Section $section){
+        $request->validate([
+            'content' => 'required|max:100',
+        ]);
+
+        $postedcontent = PostThread::make([
+            'content' => $request->input('content'),
+
+        ]);
+
+        if($postedcontent->save()){
+            return redirect(route('schoolYears'))->with('success','School Year added.');
+        }
+
+    }
+
     public function classStream(){
         return view('teacher.class-stream-page.index');
 
