@@ -22,21 +22,62 @@
 
     {{-- Tab content --}}
     <div class="tab-content py-3 px-3 border border-1" id="a1">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="row">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row">
+                    <div class="col">
+                    <button class="btn btn-primary btn-lg" style="width: 200px;border: 1px;">
+                        Join Meeting
+                    </button>
+                </div>
                 <div class="col">
-            <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                Section 1 - Year 1
-               </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                    Section 2 - Year 2
+                   <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;">
+                    Write Post
                    </button>
+                   <div class="mt-5">
+                   <div class="row">
+                    <div class="col">
+                        <div class="card">
+                        <div class="card-header">
+                          <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                          <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
+                          <div class="ms-3">
+                            <h5><strong>
+                           Teacher name or master name
+                            </strong></h5>
+                            <p class="small mb-0">Time and date</p>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                        <div class="card-body">
+                          <h5 class="card-title">Special title treatment</h5>
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>
+                      </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+                              <div class="d-flex flex-row align-items-center">
+                          <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
+                          </div>
+                          <div class="input-group" style="width: 85%">
+                            <input type="text" class="form-control rounded" placeholder="Add comment" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
+                              <i class="bi bi-send"></i>
+                            </button>
+                     </div>
+                    </div>
+                  </div>
+                    </div> <!-- end card -->
+                      </div>
+                      </div> <!-- end row -->
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
 
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
