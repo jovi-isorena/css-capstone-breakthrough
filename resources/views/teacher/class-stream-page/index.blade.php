@@ -20,6 +20,7 @@
         </div>
     </nav>
 
+
     {{-- Tab content --}}
     <div class="tab-content py-3 px-3 border border-1" id="a1">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -31,6 +32,12 @@
                 </div>
 
                 <div class="col">
+                    <span class="text-danger fst-italics">
+                        @error('content')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                    @foreach( $teachers as $teacher)
                     <button type="button" id="editBtn" class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;" onclick="editMode(true)">Write Post</button>
                     <div class="card" style="display: none" name="writepost" id="writepost">
                         <form action="{{route('teacherAddpost', ['sectionid' => $section->sectionID,'subjectname' => $subjectname])}}" method="POST">
@@ -41,9 +48,9 @@
                           <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
                           <div class="ms-3">
                             <h5><strong>
-                           Teacher name or master name
+                          {{ $teacher->firstName.' '.$teacher->middleName.' '.$teacher->lastName }}
                             </strong></h5>
-                            <p class="small mb-0">Time and date</p>
+
                           </div>
                         </div>
                           </div>
@@ -55,11 +62,10 @@
                                 <textarea class="form-control" placeholder="Announce Something" name="content" id="content" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Announcement</label>
                               </div>
-                              <span class="text-danger fst-italics">*
-                                @error('content')
-                                    {{ $message }}
-                                @enderror
-                            </span>
+                              <div class="mt-3">
+                                <label for="fileupload" class="form-label">Upload File: </label>
+                                <input class="form-control rounded border" type="file" id="fileupload" name="fileupload">
+                              </div>
                         </div>
                       </div>
                       </div>
@@ -117,6 +123,7 @@
                       </div>
                       </div> <!-- end row -->
                     </div>
+                    @endforeach
                     @endforeach
                 </div>
             </div>

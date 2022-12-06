@@ -35,6 +35,7 @@ class TeacherController extends Controller
 
     public function classshow(Request $request,Section $section)
     {
+        $id = Auth::id();
         $sectionID = $section->sectionID;
         $students = DB::table('Section_Student')
         ->join('Student', function($join) use ($sectionID)
@@ -50,7 +51,11 @@ class TeacherController extends Controller
 
         $postthread = PostThread::where('sectionSubjectID',$sectionSubjectid)
         ->get();
+
+        $teachers = Teacher::where('userID', $id)
+        ->get();
         return view('teacher.class-stream-page.index',[
+            'teachers' => $teachers,
             'section' => $section,
             'students' => $students,
             'subjectname' => $request->sectionsubject,
@@ -68,8 +73,21 @@ class TeacherController extends Controller
      */
     public function addpost(Request $request){
         $request->validate([
-            'content' => 'required|max:100'
+            'content' => 'required|max:100',
+            'fileupload' => 'required',
+            'fileupload.*' => 'mimes:doc,pdf,docx,zip,png,jpge,jpg'
         ]);
+        $size = $request->file('fileupload')->getSize();
+        $name = $request->file('fileupload')->getCLientOriginalName();
+        $request-file('fileupload')->store('public/'.($request->subjectname.$request->sectionid).'/');
+        $photo = new Photo();
+        $photo->name = $name;
+        $photo->size = $size;
+        $photo->save();
+        // if($request->hasFile('photo')){
+
+        // }
+
         $id = Auth::id();
         $sectionSubjectID = SectionSubject::where('name', $request->subjectname)
         ->where('sectionID', $request->sectionid)
