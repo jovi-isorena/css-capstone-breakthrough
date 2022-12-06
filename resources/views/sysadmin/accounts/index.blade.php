@@ -39,7 +39,7 @@
                             <td>{{$user->name}}</td>    
                             <td>{{$user->role}}</td>    
                             <td>
-                                <button class="btn btn-primary">View</button>
+                                <a href="{{ route('accountShow', $user->id) }}" class="btn btn-primary">View</a>
                                 <button class="btn btn-danger">Archive</button>
                             </td>
                         </tr>    

@@ -35,7 +35,7 @@
                             <td>{{$schoolYear->start}}</td>    
                             <td>{{$schoolYear->end}}</td>    
                             <td>
-                                <button class="btn btn-primary">View</button>
+                                <a href="{{ route('schoolYearShow', $schoolYear->schoolYearID) }}" class="btn btn-primary">View</a>
                                 <button class="btn btn-danger">Archive</button>
                             </td>
                         </tr>    
