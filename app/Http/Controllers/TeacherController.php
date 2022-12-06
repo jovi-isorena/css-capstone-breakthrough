@@ -10,6 +10,7 @@ use App\Models\SectionSubject;
 use App\Models\Section;
 use App\Models\Teacher;
 use App\Models\SectionStudent;
+use App\Models\PostThread;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 
@@ -31,7 +32,7 @@ class TeacherController extends Controller
 
     }
 
-    public function classshow(Section $section)
+    public function classshow(Request $request,Section $section)
     {
         $sectionID = $section->sectionID;
         $students = DB::table('Section_Student')
@@ -44,29 +45,39 @@ class TeacherController extends Controller
 
         return view('teacher.class-stream-page.index',[
             'section' => $section,
-            'students' => $students
-
+            'students' => $students,
+            'subjectname' => $request->sectionsubject
         ]);
 
     }
 
-    public function addpost(Request $request, Section $section){
-        $request->validate([
-            'content' => 'required|max:100',
-        ]);
-        if($request->has('sectionSubjectID')){
-        $postedcontent = PostThread::make([
 
+      /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addpost(Request $request){
+        $request->validate([
+            'content' => 'required|max:100'
+        ]);
+        $id = Auth::id();
+        $sectionSubjectID = SectionSubject::where('name', $request->subjectname)
+        ->where('sectionID', $request->sectionid)
+        ->value('sectionSubjectID');
+        $postedcontent = PostThread::make([
+            'userID' => $id,
+            'sectionSubjectID' => $sectionSubjectID,
             'content' => $request->input('content'),
             'status' => "active"
         ]);
 
         if($postedcontent->save()){
-            return redirect(route('schoolYears'))->with('success','School Year added.');
+            return back()->with('success','Announcement Posted.');
         }
+    }
 
-    }
-    }
     public function classStream(){
         return view('teacher.class-stream-page.index');
 

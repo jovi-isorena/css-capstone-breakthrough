@@ -9,6 +9,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SectionStudentController;
 use App\Http\Controllers\SectionSubjectController;
 use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\PostThread;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
 /*
@@ -95,7 +96,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/teacher/class-stream', [TeacherController::class, 'classStream'])->name('teacherClassStream');
 
     // route for teacher add post
-    Route::put('/teacher/class-steam/{section}/addpost', [TeacherController::class, 'addpost'])->name('teacherAddpost');
+    Route::post('/teacher/class-steam/addpost', [TeacherController::class, 'addpost'])->name('teacherAddpost');
 
     // route for Show selected section
     Route::get('/teacher/class-stream/{section}', [TeacherController::class, 'classshow'])->name('teacherstudentshow');

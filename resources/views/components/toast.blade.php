@@ -44,7 +44,7 @@
 
 
 @section('toastscripts')
-    
+
     <script>
         const toastDiv = document.getElementById('liveToast')
         if(toastDiv){

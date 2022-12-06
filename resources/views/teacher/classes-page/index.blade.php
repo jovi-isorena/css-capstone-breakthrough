@@ -8,9 +8,7 @@
     </x-slot>
     <section class="h-100">
         <div class="container h-100 py-5">
-            <h1>
 
-            </h1>
 
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-10">
@@ -43,7 +41,7 @@
                     @endforeach
                     </div>
                     <div class="col-md-2 col-lg-2 col-xl-2 text-end">
-                       <a href="{{ route('teacherstudentshow', $SectionSubject->sectionID) }}" class="stretched-link" ><img src="{{ URL('images/placeholder.jpg') }}" class="img-fluid rounded-3" alt="Place Holder"></a>
+                       <a href="{{ route('teacherstudentshow', ['section' => $SectionSubject->sectionID, 'sectionsubject' => $SectionSubject->name]) }}" class="stretched-link" ><img src="{{ URL('images/placeholder.jpg') }}" class="img-fluid rounded-3" alt="Place Holder"></a>
                     </div>
                 </div>
                 </div>

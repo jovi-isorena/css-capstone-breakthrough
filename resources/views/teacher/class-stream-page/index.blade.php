@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="d-flex justify-content-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Class-Stream') }}
+                {{ __('Class Stream') }}
             </h2>
         </div>
     </x-slot>
 
 
 <div class="container mt-5">
-
+    @include('components.toast')
     {{-- Tab Header --}}
     <nav>
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -29,13 +29,12 @@
                         Join Meeting
                     </button>
                 </div>
+
                 <div class="col">
                     <button type="button" id="editBtn" class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;" onclick="editMode(true)">Write Post</button>
-
                     <div class="card" style="display: none" name="writepost" id="writepost">
-                        <form action="{{ route('teacherAddpost', $section) }}" method="post">
+                        <form action="{{route('teacherAddpost', ['sectionid' => $section->sectionID,'subjectname' => $subjectname])}}" method="POST">
                             @csrf
-                            @method('put')
                         <div class="card-header">
                           <div class="d-flex justify-content-between">
                             <div class="d-flex flex-row align-items-center">
@@ -56,6 +55,11 @@
                                 <textarea class="form-control" placeholder="Announce Something" name="content" id="content" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Announcement</label>
                               </div>
+                              <span class="text-danger fst-italics">*
+                                @error('content')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                       </div>
                       </div>
