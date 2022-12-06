@@ -87,7 +87,10 @@ Route::middleware('auth')->group(function () {
     //     return view('teacher/login-page/index');
     // });
     
-    
+    //routr for sysadmin create teacher info with photo
+    Route::get('upload-image', [UserController::class, 'index']);
+    Route::post('save', [UserController::class, 'savephoto']);
+
     // route for teacher classes
     Route::get('/teacher/classes', [TeacherController::class, 'classes'])->name('teacherClasses');
     

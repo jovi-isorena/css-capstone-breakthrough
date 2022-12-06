@@ -1,14 +1,14 @@
-<div class="modal fade" id="createStudentAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelStudent" aria-hidden="true">
+<div class="modal fade" id="createTeacherAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelTeacher" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabelStudent">Create New Student Account</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabelTeacher">Create New Teacher Account</h1>
           <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('accountStore')}}" method="POST" enctype='multipart/form-data'>
+        <form action="{{route('accountStore')}}" method="POST">
             @csrf
             <div class="modal-body">
-                <input type="hidden" name="role" value="student">
+                <input type="hidden" name="role" value="teacher">
                     {{-- teacher form --}}
                     <div id="teacherform">
                         <div class="mt-3 mb-3">
@@ -62,39 +62,41 @@
                             <div class="mb-3">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="gradeLevel" class="form-label">Grade Level</label>
+                                        <label for="position" class="form-label">Position</label>
                                         <span class="text-danger fst-italics">*
-                                            @error('gradeLevel')
+                                            @error('position')
                                                 {{ $message }}
                                             @enderror
                                         </span>
-                                        <select name="gradeLevel" id="gradeLevel" class="form-select">
+                                        <select name="position" id="position" class="form-select">
                                             <option value="" hidden disabled selected>--Select One--</option>
-                                            @for ($i = 1; $i < 13; $i++)
-                                                <option value="{{$i}}">{{$i}}</option>
-                                                
-                                            @endfor
-                                            
+                                            <option value="Teacher 1">Teacher 1</option>
+                                            <option value="Teacher 2">Teacher 2</option>
+                                            <option value="Teacher 3">Teacher 3</option>
+                                            <option value="Master Teacher 1">Master Teacher 1</option>
+                                            <option value="Master Teacher 2">Master Teacher 2</option>
+                                            <option value="Master Teacher 3">Master Teacher 3</option>
+                                            <option value="Master Teacher 4">Master Teacher 4</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="gender" class="form-label">Gender</label>
+                                        <label for="employmentStatus" class="form-label">Employment Status</label>
                                         <span class="text-danger fst-italics">*
-                                            @error('gender')
+                                            @error('employmentStatus')
                                                 {{ $message }}
                                             @enderror
                                         </span>
-                                        <select name="gender" id="gender" class="form-select">
+                                        <select name="employmentStatus" id="employmentStatus" class="form-select">
                                             <option value="" hidden disabled selected>--Select One--</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            <option value="Regular">Regular</option>
+                                            <option value="Part-time">Part-time</option>
                                         </select>
                                         <div class="col-md-11"><label for="image" class="form-label">--Select Photo--</label>
                                             <input type="file" class="" name="imageURL" id="imageURL"> 
                                             @error('image')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                             @enderror
-</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +106,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary bg-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success bg-success">Create</button>
+                <button type="submit" class="btn btn-success bg-success">Update</button>
             </div>
         </form>
       </div>
