@@ -21,14 +21,14 @@ class SectionSubject extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'section_subject';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'sectionSubjectID';
@@ -76,5 +76,10 @@ class SectionSubject extends Model
     public function section()
     {
         return $this->belongsTo('App\Models\Section', 'sectionID', 'sectionID');
+    }
+
+    public function sectionstudent()
+    {
+        return $this->belongsTo('App\Models\SectionStudent', 'sectionID', 'sectionID');
     }
 }

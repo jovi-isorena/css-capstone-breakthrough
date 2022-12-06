@@ -1,16 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center">
             <div class="col-md-1 border-2">
-                <a href="{{ route('schoolYears') }}" class="btn btn-dark"><i class="fas fa-chevron-left"></i></a>
-
+                <a href="{{ route('curriculums') }}" class="btn btn-dark"><i class="fas fa-chevron-left"></i></a>
+                
             </div>
             <div class="col-md-6">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('School Years ') . $schoolYear-> schoolYearID }}
+                    {{ __('Curriculum: ') . $curriculum->name }}
                 </h2>
 
             </div>
+            
         </div>
     </x-slot>
     <div class="py-12 container">
@@ -20,21 +21,21 @@
             <table class="table text-center">
                 <thead>
                     <tr>
-                        <th>School Year ID</th>
-                        <th>Curriculum ID</th>
-                        <th>Start</th>
-                        <th>End</th>
+                        <th>Subject Code</th>
+                        <th>Name</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    @foreach ($curriculum->curriculumSubjects as $subject)
                         <tr>
-                            <td>{{$schoolYear->schoolYearID}}</td>
-                            <td>{{$schoolYear->curriculumID}}</td>
-                            <td>{{$schoolYear->start}}</td>
-                            <td>{{$schoolYear->end}}</td>
-
-                        </tr>
-
+                            <td>{{$subject->subjectShorthand}}</td>    
+                            <td>{{$subject->name}}</td>    
+                            <td>{{$subject->description}}</td>    
+                           
+                        </tr>    
+                    @endforeach
                 </tbody>
             </table>
         </div>

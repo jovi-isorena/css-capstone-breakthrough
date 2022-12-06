@@ -18,7 +18,7 @@ class SectionStudent extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'section_student';
@@ -42,5 +42,10 @@ class SectionStudent extends Model
     public function section()
     {
         return $this->belongsTo('App\Models\Section', 'sectionID', 'sectionID');
+    }
+
+    public function sectionsubject()
+    {
+        return $this->belongsTo('App\Models\SectionSubject', 'sectionID', 'sectionID');
     }
 }

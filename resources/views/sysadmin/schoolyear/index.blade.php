@@ -31,14 +31,14 @@
                 <tbody>
                     @foreach ($schoolYears as $schoolYear)
                         <tr>
-                            <td>{{$schoolYear->schoolYearID}}</td>
-                            <td>{{$schoolYear->start}}</td>
-                            <td>{{$schoolYear->end}}</td>
+                            <td>{{$schoolYear->schoolYearID}}</td>    
+                            <td>{{$schoolYear->start}}</td>    
+                            <td>{{$schoolYear->end}}</td>    
                             <td>
-                                <a href="{{ route('schoolYearShow',$schoolYear->schoolYearID) }}" class="btn btn-primary">View</a>
+                                <button class="btn btn-primary">View</button>
                                 <button class="btn btn-danger">Archive</button>
                             </td>
-                        </tr>
+                        </tr>    
                     @endforeach
                 </tbody>
             </table>

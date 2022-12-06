@@ -30,13 +30,13 @@
                 <tbody>
                     @foreach ($curriculums as $curriculum)
                         <tr>
-                            <td>{{$curriculum->name}}</td>
-                            <td>{{$curriculum->gradeLevel}}</td>
+                            <td>{{$curriculum->name}}</td>    
+                            <td>{{$curriculum->gradeLevel}}</td>    
                             <td>
                                 <a href="{{ route('curriculumShow',$curriculum->curriculumID) }}" class="btn btn-primary">View</a>
                                 <button class="btn btn-danger">Archive</button>
                             </td>
-                        </tr>
+                        </tr>    
                     @endforeach
                 </tbody>
             </table>

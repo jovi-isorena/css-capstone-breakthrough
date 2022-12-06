@@ -43,9 +43,8 @@ Route::middleware('auth')->group(function () {
     //accounts
     Route::get('sysadmin/accounts', [UserController::class, 'index'])->name('accounts');
     Route::post('sysadmin/account', [UserController::class, 'store'])->name('accountStore');
-    Route::get('sysadmin/account', [UserController::class, 'store'])->name('accountStore1');
     Route::get('sysadmin/account/{account}', [UserController::class, 'show'])->name('accountShow');
-
+    
     //curriculum
     Route::get('sysadmin/curriculums', [CurriculumController::class, 'index'])->name('curriculums');
     Route::get('sysadmin/curriculum/create', [CurriculumController::class, 'create'])->name('curriculumCreate');
@@ -95,6 +94,9 @@ Route::middleware('auth')->group(function () {
 
     // route for teacher class stream page
     Route::get('/teacher/class-stream', [TeacherController::class, 'classStream'])->name('teacherClassStream');
+
+    //Show selected section
+    Route::get('/teacher/class-stream/{section}', [TeacherController::class, 'classshow'])->name('teacherstudentshow');
 
     // route for teacher class activiy page
     Route::get('/teacher/class-activity', [TeacherController::class, 'classActivity'])->name('teacherClassActivity');
