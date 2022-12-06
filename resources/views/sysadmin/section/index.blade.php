@@ -11,7 +11,6 @@
                 <button class="btn btn-success justify-self-right" data-bs-toggle="modal" data-bs-target="#createSection">
                     Create Section
                 </button>
-                @include('sysadmin.section.partials.create')
             </div>
         </div>
         <form action="{{route('sections')}}" method="get">
@@ -36,6 +35,7 @@
     </x-slot>
     <div class="py-12 container">
         @include('components.toast')
+        @include('sysadmin.section.partials.create')
 
         <div class="my-5">
             @for ($i = 1; $i < 13; $i++)
