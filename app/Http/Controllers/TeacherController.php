@@ -54,10 +54,11 @@ class TeacherController extends Controller
         $request->validate([
             'content' => 'required|max:100',
         ]);
-
+        if($request->has('sectionSubjectID')){
         $postedcontent = PostThread::make([
-            'content' => $request->input('content'),
 
+            'content' => $request->input('content'),
+            'status' => "active"
         ]);
 
         if($postedcontent->save()){
@@ -65,7 +66,7 @@ class TeacherController extends Controller
         }
 
     }
-
+    }
     public function classStream(){
         return view('teacher.class-stream-page.index');
 

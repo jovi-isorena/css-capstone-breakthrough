@@ -52,13 +52,10 @@
                         <div class="row">
                           <div class="col">
                         <div class="card-body">
-
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Announce Something" name="content" id="content" style="height: 100px"></textarea>
                                 <label for="floatingTextarea2">Announcement</label>
                               </div>
-
-
                         </div>
                       </div>
                       </div>
@@ -205,14 +202,14 @@
                 // edit mode true = hide divname, edit button; show input name, edit control
                 if(bool){
                     document.getElementById('editControl').style.display = 'flex';
-                    document.getElementById('name').style.display = 'block';
+                    document.getElementById('content').style.display = 'block';
                     document.getElementById('writepost').style.display = 'block';
                     document.getElementById('editBtn').style.display = 'none';
                     document.getElementById('divName').style.display = 'none';
 
                 }else{
                     document.getElementById('editControl').style.display = 'none';
-                    document.getElementById('name').style.display = 'none';
+                    document.getElementById('content').style.display = 'none';
                     document.getElementById('writepost').style.display = 'none';
                     document.getElementById('editBtn').style.display = 'block';
                     document.getElementById('divName').style.display = 'block';
