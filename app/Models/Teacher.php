@@ -98,6 +98,6 @@ class Teacher extends Model
      */
     public function postthread()
     {
-        return $this->belongsTo('App\Models\PostThread', 'userID','');
+        return $this->belongsTo('App\Models\PostThread', 'userID', 'userID');
     }
 }

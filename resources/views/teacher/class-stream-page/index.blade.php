@@ -73,11 +73,9 @@
                   </div>
                 </form>
                     </div> <!-- end card -->
-
-
-
-
+                    @foreach ($postthreads as $postthread)
                    <div class="mt-5">
+
                    <div class="row">
                     <div class="col">
                         <div class="card">
@@ -87,9 +85,9 @@
                           <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
                           <div class="ms-3">
                             <h5><strong>
-                           Teacher name or master name
+                           {{ $postthread->Teacher->firstName.' '. $postthread->Teacher->middleName.' '.$postthread->Teacher->lastName }}
                             </strong></h5>
-                            <p class="small mb-0">Time and date</p>
+                            <p class="small mb-0">{{ $postthread->created_at->format('F') .' '.$postthread->created_at->format('d') }}</p>
                           </div>
                         </div>
                           </div>
@@ -97,9 +95,8 @@
                         <div class="row">
                           <div class="col">
                         <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <h5 class="card-title">{{ $postthread->content }}</h5>
+
                         </div>
                       </div>
                       </div>
@@ -120,6 +117,7 @@
                       </div>
                       </div> <!-- end row -->
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div> <!-- tab pane end  -->

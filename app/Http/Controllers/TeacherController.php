@@ -13,6 +13,7 @@ use App\Models\SectionStudent;
 use App\Models\PostThread;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TeacherController extends Controller
 {
@@ -43,10 +44,17 @@ class TeacherController extends Controller
         })
         ->get();
 
+        $sectionSubjectid = SectionSubject::where('name',$request->sectionsubject)
+        ->where('sectionID', $request->section->sectionID)
+        ->value('sectionSubjectID');
+
+        $postthread = PostThread::where('sectionSubjectID',$sectionSubjectid)
+        ->get();
         return view('teacher.class-stream-page.index',[
             'section' => $section,
             'students' => $students,
-            'subjectname' => $request->sectionsubject
+            'subjectname' => $request->sectionsubject,
+            'postthreads' => $postthread
         ]);
 
     }
@@ -74,7 +82,7 @@ class TeacherController extends Controller
         ]);
 
         if($postedcontent->save()){
-            return back()->with('success','Announcement Posted.');
+            return Redirect::back()->with('success','Announcement Posted.');
         }
     }
 
