@@ -40,7 +40,7 @@
                     @foreach( $teachers as $teacher)
                     <button type="button" id="editBtn" class="btn btn-outline-secondary btn-lg mt-5" style="width: 700px;height: 100px;" onclick="editMode(true)">Write Post</button>
                     <div class="card" style="display: none" name="writepost" id="writepost">
-                        <form action="{{route('teacherAddpost', ['sectionid' => $section->sectionID,'subjectname' => $subjectname])}}" method="POST">
+                        <form action="{{route('teacherAddpost', ['sectionid' => $section->sectionID,'subjectname' => $subjectname])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                         <div class="card-header">
                           <div class="d-flex justify-content-between">

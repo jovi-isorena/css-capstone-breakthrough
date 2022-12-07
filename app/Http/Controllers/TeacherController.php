@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Auth\AuthenticatedSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\SectionSubject;
 use App\Models\Section;
@@ -74,16 +75,9 @@ class TeacherController extends Controller
     public function addpost(Request $request){
         $request->validate([
             'content' => 'required|max:100',
-            'fileupload' => 'required',
-            'fileupload.*' => 'mimes:doc,pdf,docx,zip,png,jpge,jpg'
+            'fileupload.*' => 'mimes:doc,pdf,docx,zip,png,jpge,jpg|max:25000'
         ]);
-        $size = $request->file('fileupload')->getSize();
-        $name = $request->file('fileupload')->getCLientOriginalName();
-        $request-file('fileupload')->store('public/'.($request->subjectname.$request->sectionid).'/');
-        $photo = new Photo();
-        $photo->name = $name;
-        $photo->size = $size;
-        $photo->save();
+
         // if($request->hasFile('photo')){
 
         // }
@@ -100,7 +94,32 @@ class TeacherController extends Controller
         ]);
 
         if($postedcontent->save()){
+            if($request->hasFile('fileupload')){
+
+            $path = public_path('/teacher/'.($request->subjectname.$request->sectionid).'/');
+
+                if(!File::isDirectory($path)){
+                    File::makeDirectory($path, 0777, true, true);
+                }
+                $name = $request->file('fileupload');
+                $filename = $name->getClientOriginalName();
+                $pathstore = $request->file('fileupload')->store('teacher/'.$request->subjectname.$request->sectionid);
+                $fileurl = 'public/teacher/'.($request->subjectname.$request->sectionid).'/'.$filename;
+                $destinationPath = public_path('/teacher/'.$request->subjectname.$request->sectionid.'/');
+                $name->move($destinationPath,$filename);
+                $lastinsertid = $postedcontent->postID;
+                    $postrow = PostThread::find($lastinsertid);
+                    // check if the update is successful
+                    if(!$postrow->update([
+                        'file_url' => $fileurl
+                    ])){
+                        return back()->with('danger', 'Teacher not assigned.');
+                    }
+
+                return Redirect::back()->with('success','Announcement Posted.');
+            }else{
             return Redirect::back()->with('success','Announcement Posted.');
+        }
         }
     }
 
