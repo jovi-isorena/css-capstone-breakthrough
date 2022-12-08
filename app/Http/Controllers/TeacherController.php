@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\SectionSubject;
 use App\Models\Section;
+use App\Models\Comments;
 use App\Models\Teacher;
 use App\Models\SectionStudent;
 use App\Models\PostThread;
@@ -121,6 +122,24 @@ class TeacherController extends Controller
             return Redirect::back()->with('success','Announcement Posted.');
         }
         }
+    }
+
+
+    public function addcomment(Request $request){
+        $request->validate([
+            'content' => 'required|max:100',
+        ]);
+
+        $id = Auth::id();
+        $post = SectionSubject::where('name', $request->subjectname)
+        ->where('sectionID', $request->sectionid)
+        ->value('sectionSubjectID');
+        $postedcontent = PostThread::make([
+            'userID' => $id,
+            'sectionSubjectID' => $sectionSubjectID,
+            'content' => $request->input('content'),
+            'status' => "active"
+        ]);
     }
 
     public function classStream(){

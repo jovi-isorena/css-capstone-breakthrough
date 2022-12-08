@@ -107,6 +107,8 @@
                       </div>
                       </div>
                         <div class="card-footer">
+                            <form action="{{route('teacherAddComment', ['postid' => $postthread->postID,'subjectname' => $subjectname])}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                             <div class="d-flex justify-content-between">
                               <div class="d-flex flex-row align-items-center">
                           <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
@@ -116,8 +118,9 @@
                             <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
                               <i class="bi bi-send"></i>
                             </button>
-                     </div>
+                        </div>
                     </div>
+                </form>
                   </div>
                     </div> <!-- end card -->
                       </div>
