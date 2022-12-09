@@ -1,5 +1,4 @@
-@extends('/layouts/layout-teacher')
-@section('content')
+<x-app-layout>
 
 <div class="float-container">
     <div class="mb-0">
@@ -33,4 +32,4 @@
 </div>
 </div>
 
-@endsection
+</x-app-layout>

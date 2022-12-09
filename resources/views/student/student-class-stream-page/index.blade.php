@@ -1,6 +1,4 @@
-@extends('/layouts/layout-teacher')
-@section('content')
-
+<x-app-layout>
 <div class="container mt-5">
 
     {{-- Tab Header --}}
@@ -35,16 +33,46 @@
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="row">
                 <div class="col">
-            <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                Section 1 - Year 1
-               </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-outline-secondary btn-lg mt-5" style="width: 100%;height: 100px;">
-                    Section 2 - Year 2
-                   </button>
+                  @foreach($displays as $display)
+                <table class="table">
+  <thead> @if($display->teacherID == $teacherID)
+  <img style="margin:0;" width="100px" src="{{ Url($display->teacher->imageURL)}}">
+  <b> <p style="margin: 0;">
+  {{$display->teacher->firstName.' '.$display->teacher->lastName}}</p></b> 
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="/Images/profile.png" width="45px">Mark</td>
+      <td><img src="/Images/profile.png" width="45px">Otto</td>
+      <td><img src="/Images/profile.png" width="45px">@mdo</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+    </tr>
+    <tr>
+      <td><img src="/Images/profile.png" width="45px">Mark</td>
+      <td><img src="/Images/profile.png" width="45px">Otto</td>
+      <td><img src="/Images/profile.png" width="45px">@mdo</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+    </tr>
+    <tr>
+      <td><img src="/Images/profile.png" width="45px">Mark</td>
+      <td><img src="/Images/profile.png" width="45px">Otto</td>
+      <td><img src="/Images/profile.png" width="45px">@mdo</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+    </tr>
+    <tr>
+      <td><img src="/Images/profile.png" width="45px">Mark</td>
+      <td><img src="/Images/profile.png" width="45px">Otto</td>
+      <td><img src="/Images/profile.png" width="45px">@mdo</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+      <td><img src="/Images/profile.png" width="45px">the Bird</td>
+    </tr>
+  </tbody>
+  @endif
+</table>
+@endforeach
             </div>
         </div>
     </div>
@@ -89,11 +117,9 @@
                       </div>
                     </div>
                   </div>
-            </div>
+               </div>
         </div>
         </div>
-
     </div>
 </div>
-
-@endsection
+</x-app-layout>

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $lastName
  * @property integer $gradeLevel
  * @property string $gender
+ * @property string $imageURL
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
@@ -39,7 +40,7 @@ class Student extends Model
     /**
      * @var array
      */
-    protected $fillable = ['userID', 'firstName', 'middleName', 'lastName', 'gradeLevel', 'gender', 'created_at', 'updated_at', 'status'];
+    protected $fillable = ['userID', 'firstName', 'middleName', 'lastName', 'gradeLevel', 'gender', 'imageURL', 'created_at', 'updated_at', 'status'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

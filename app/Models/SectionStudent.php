@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\StudentController;
+Use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 
 /**

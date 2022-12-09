@@ -90,7 +90,12 @@
                                             <option value="" hidden disabled selected>--Select One--</option>
                                             <option value="Regular">Regular</option>
                                             <option value="Part-time">Part-time</option>
-                                        </select>
+                                        </select><div class="col-md-11"><label for="image" class="form-label">--Select Photo--</label>
+                                            <input type="file" class="" name="imageURL" id="imageURL"> 
+                                            @error('image')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>

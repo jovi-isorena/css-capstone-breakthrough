@@ -87,17 +87,8 @@ class UserController extends Controller
                 'suffix'=> 'max:5',
                 'email' => 'required|max:255|email|unique:users,email',
                 'position' => 'required|max:255',
-                'employmentStatus' => 'required|max:255',
-                'imageURL' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'employmentStatus' => 'required|max:255'
             ]);
-              /**  $name = $request->file('imageURL')->getClientOriginalName();
-            *$path = $request->file('imageURL')->store('public/images');
-            *$save = new Teacher;
-            *$save->name = $name;
-            *$save->path = $path;
-            *$save->save();
-            *return view('sysadmin/accounts');
-            */
 
             //create random password
             $plaintextPassword = Str::random(8);
@@ -120,13 +111,18 @@ class UserController extends Controller
                     'suffix' => $request->input('suffix'), 
                     'position' => $request->input('position'), 
                     'employmentStatus' =>  $request->input('employmentStatus'), 
-                    'imageURL' => '',
-                    'status' => 'active',
+                    'imageURL' => $request->imageURL,
+                    'status' => 'active'
                 ]);
-                
+                $request->imageURL;
+                $file = $request->file('imageURL');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time().'.'.$extention;
+                $file->move(public_path('Images/teachers'), $filename);
+                $teacher->imageURL ='Images/teachers/'.$filename;
                 if($teacher->save()){
                     //send email to the registered email address of the user
-                    Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                  //  Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
@@ -139,9 +135,7 @@ class UserController extends Controller
                 'suffix'=> 'max:5',
                 'email' => 'required|max:255|email|unique:users,email',
                 'gradeLevel' => 'required|min:1|max:12',
-                'gender' => 'required|max:255',
-                'imageURL' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-
+                'gender' => 'required|max:255'
             ]);
             //create random password
             $plaintextPassword = Str::random(8);
@@ -154,30 +148,28 @@ class UserController extends Controller
                 'mandatoryChangePassword' => 1,
                 'role' => $request->input('role'),
                 'status' => 'active'
-            ]);     
-                if ($user->save()){
-                    $student = Student::make([
-                        'userID' => $user->id, 
-                         'firstName' => $request->input('fname'), 
-                         'middleName' => $request->input('mname'), 
-                         'lastName' => $request->input('lname'), 
-                         'suffix' => $request->input('suffix'), 
-                         'gender' =>  $request->input('gender'), 
-                         'gradeLevel' =>  $request->input('gradeLevel'),
-                         'imageURL'=> $request->imageURL, 
-                         'status' => 'active'
-                         
-                     ]);   
-                    $request->imageURL;
-                    $file = $request->file('imageURL');
-                    $extention = $file->getClientOriginalExtension();
-                    $filename = time().'.'.$extention;
-                    $file->move('public/Images/', $filename);
-                    $student->imageURL ='public/Images/'.$filename;
-                
+            ]);
+            if($user->save()){
+                $student = Student::make([
+                    'userID' => $user->id, 
+                    'firstName' => $request->input('fname'), 
+                    'middleName' => $request->input('mname'), 
+                    'lastName' => $request->input('lname'), 
+                    'suffix' => $request->input('suffix'), 
+                    'gender' =>  $request->input('gender'), 
+                    'gradeLevel' =>  $request->input('gradeLevel'), 
+                    'imageURL' => $request->imageURL, 
+                    'status' => 'active'
+                ]);
+                $request->imageURL;
+                $file = $request->file('imageURL');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time().'.'.$extention;
+                $file->move(public_path('Images/students'), $filename);
+                $student->imageURL ='Images/students/'.$filename;
                 if($student->save()){
                     //send email to the registered email address of the user
-                    Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                    // Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }

@@ -1,4 +1,4 @@
-@extends('/layouts/layout-teacher')
+@extends('/layouts/layout-student')
 @section('content')
 <div class="float-container">
     <div class="float-child">
