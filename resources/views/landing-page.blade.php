@@ -8,7 +8,7 @@
           <h1 class=" display-4">INA NG BUHAY CATHOLIC SCHOOL</h1>
           <p>Jordan Heights Subd., Damong 
             Maliit, Novaliches Quezon City</p>
-            <a href="" class="btn">Log in</a>
+            <a href="{{ route('login') }}" class="btn">Log in</a>
         </div>
         <img src="{{ URL::asset('images/heroimg.png'); }}" class="img-fluid">
       </div>

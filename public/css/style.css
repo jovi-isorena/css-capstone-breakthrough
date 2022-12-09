@@ -141,3 +141,11 @@ footer .btn:hover{
     color:black;
     border:1px solid white;
 }
+.aboutus{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.aboutus .card{
+    background-color: #00356B;
+}
