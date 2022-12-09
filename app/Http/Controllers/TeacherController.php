@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\SectionSubject;
 use App\Models\Section;
-use App\Models\Comments;
+use App\Models\Comment;
 use App\Models\Teacher;
 use App\Models\SectionStudent;
 use App\Models\PostThread;
@@ -54,11 +54,15 @@ class TeacherController extends Controller
         $postthread = PostThread::where('sectionSubjectID',$sectionSubjectid)
         ->get();
 
+        $comments = Comment::where('status', "active")
+        ->get();
+
         $teachers = Teacher::where('userID', $id)
         ->get();
         return view('teacher.class-stream-page.index',[
             'teachers' => $teachers,
             'section' => $section,
+            'comments' => $comments,
             'students' => $students,
             'subjectname' => $request->sectionsubject,
             'postthreads' => $postthread
@@ -78,11 +82,8 @@ class TeacherController extends Controller
             'content' => 'required|max:100',
             'fileupload.*' => 'mimes:doc,pdf,docx,zip,png,jpge,jpg|max:25000'
         ]);
-
         // if($request->hasFile('photo')){
-
         // }
-
         $id = Auth::id();
         $sectionSubjectID = SectionSubject::where('name', $request->subjectname)
         ->where('sectionID', $request->sectionid)
@@ -127,19 +128,22 @@ class TeacherController extends Controller
 
     public function addcomment(Request $request){
         $request->validate([
-            'content' => 'required|max:100',
+            'addcomment' => 'required|max:100',
         ]);
-
         $id = Auth::id();
-        $post = SectionSubject::where('name', $request->subjectname)
-        ->where('sectionID', $request->sectionid)
-        ->value('sectionSubjectID');
-        $postedcontent = PostThread::make([
+        $postID = $request->postid;
+        $sectionSubjectID = PostThread::where('postID', $postID)->value('sectionSubjectID');
+        $content = $request->input('addcomment');
+        $addcomments = Comment::make([
             'userID' => $id,
             'sectionSubjectID' => $sectionSubjectID,
-            'content' => $request->input('content'),
+            'postID' => $postID,
+            'content' => $content,
             'status' => "active"
         ]);
+        if($addcomments->save()){
+        return Redirect::back()->with('success','Comment Posted.');
+        }
     }
 
     public function classStream(){

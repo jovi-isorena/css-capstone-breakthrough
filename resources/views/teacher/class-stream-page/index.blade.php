@@ -107,15 +107,40 @@
                       </div>
                       </div>
                         <div class="card-footer">
+                            @foreach ($comments as $comment)
+                                <ul class="list-group list-group-flush">
+                                    @if( $comment->postID == $postthread->postID )
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between">
+
+                                            <div class="d-flex flex-row align-items-center">
+
+                                                <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 25px;">
+
+                                          <div class="ms-3">
+                                            <h5><strong>
+
+                                          {{ $comment->user->name }}
+                                            </strong> <span class="small"> {{ $comment->created_at->diffForHumans() }}</span></h5>
+                                            <p class="small mb-0">{{ $comment->content }}</p>
+                                          </div>
+
+                                        </div>
+                                          </div>
+
+                                    </li>
+                                    @endif
+                                  </ul>
+                                  @endforeach
                             <form action="{{route('teacherAddComment', ['postid' => $postthread->postID,'subjectname' => $subjectname])}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                             <div class="d-flex justify-content-between">
                               <div class="d-flex flex-row align-items-center">
-                          <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 65px;">
+                          <img src="{{ URL('images/profile.png') }}" class="img-fluid rounded-3" alt="Proifle" style="width: 45px;">
                           </div>
                           <div class="input-group" style="width: 85%">
-                            <input type="text" class="form-control rounded" placeholder="Add comment" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
+                            <input type="text" class="form-control rounded" placeholder="Add comment" aria-label="Recipient's username" name="addcomment" id="addcomment" aria-describedby="button-addon2">
+                            <button type="submit" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
                               <i class="bi bi-send"></i>
                             </button>
                         </div>

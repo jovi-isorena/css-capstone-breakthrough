@@ -14,22 +14,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property string $status
  * @property SectionSubject $sectionSubject
- * @property Teacher $teacher
  * @property PostThread $postThread
- * @property Student $student
+ * @property User $user
  */
-class Comments extends Model
+class Comment extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'comment';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'commentID';
@@ -50,14 +49,6 @@ class Comments extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function teacher()
-    {
-        return $this->belongsTo('App\Models\Teacher', 'userID', 'userID');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function postThread()
     {
         return $this->belongsTo('App\Models\PostThread', 'postID', 'postID');
@@ -66,8 +57,8 @@ class Comments extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function student()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Student', 'userID', 'userID');
+        return $this->belongsTo('App\Models\User', 'userID', 'id');
     }
 }
