@@ -39,7 +39,11 @@
                             <td class="text-start">{{$event->notes}}</td>
                             <td class="text-start">
                                 <button class="btn btn-primary" onclick="viewEvent({{$event}})">View</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <form method="POST" action="{{ url('sysadmin/contents/events/archive', $event->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('put') }}
+                                    <button class="btn btn-danger bg-danger" >Archive</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

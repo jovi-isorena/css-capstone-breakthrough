@@ -67,4 +67,13 @@ class ContentsEventsController extends Controller
         $event->delete();
         return redirect()->route('contentsEvents.index')->with('success','Event has been deleted successfully');
     }
+    public function archive(Request $request, $id)
+    {
+        $event = ContentsEvents::find($id);
+        if($event->update(['status' => 'inactive'])){
+            return back()->with('success', 'event archive :)');
+        }else{
+            return back()->with('danger', 'event archive :)');
+        }
+    }
 }
