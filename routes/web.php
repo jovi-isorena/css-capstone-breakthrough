@@ -11,6 +11,7 @@ use App\Http\Controllers\SectionSubjectController;
 use App\Http\Controllers\CurriculumController;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
+use App\Http\Controllers\ContentsEventsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +78,12 @@ Route::middleware('auth')->group(function () {
     // section subjects
     Route::put('sysadmin/sectionSubject/teachers/update', [SectionSubjectController::class, 'updateTeachers'])->name('sectionUpdateTeachers');
 
+
+    // contents events
+    Route::get('sysadmin/contents/events', [ContentsEventsController::class, 'index'])->name('contentsEvents');
+    Route::post('sysadmin/contents/events', [ContentsEventsController::class, 'store'])->name('contentsEventsStore');
+    Route::put('sysadmin/contents/events', [ContentsEventsController::class, 'update'])->name('contentsEventsUpdate');
+
     // ROUTES FOR TEACHERS
     // route for teacher homepage
     // Route::get('/teacher', function () {
@@ -126,5 +133,6 @@ Route::middleware('auth')->group(function () {
     // Route::get('/teacher/profile', function () {
     //     return view('teacher/profile-page/index');
     // });
+
 });
 require __DIR__.'/auth.php';
