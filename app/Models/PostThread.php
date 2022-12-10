@@ -23,7 +23,7 @@ class PostThread extends Model
      * 
      * @var string
      */
-    protected $table = 'post-thread';
+    protected $table = 'post_thread';
 
     /**
      * The primary key for the model.
