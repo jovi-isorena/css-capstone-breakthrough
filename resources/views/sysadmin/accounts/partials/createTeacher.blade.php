@@ -5,7 +5,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabelTeacher">Create New Teacher Account</h1>
           <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('accountStore')}}" method="POST">
+        <form action="{{route('accountStore')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
                 <input type="hidden" name="role" value="teacher">

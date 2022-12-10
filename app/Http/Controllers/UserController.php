@@ -40,6 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         if($request->input('role') === 'sysadmin'){
             $request->validate([
                 'fname'=> 'required|max:255',
