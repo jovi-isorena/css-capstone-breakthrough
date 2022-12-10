@@ -26,9 +26,9 @@
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="row">
                     <div class="col">
-                    <button class="btn btn-primary btn-lg" style="width: 200px;border: 1px;">
+                    <a href="http://localhost:8080/" class="btn btn-primary btn-lg" style="width: 200px;border: 1px;" target="_blank">
                         Join Meeting
-                    </button>
+                    </a>
                 </div>
 
                 <div class="col">
