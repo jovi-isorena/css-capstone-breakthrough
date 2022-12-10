@@ -29,11 +29,11 @@
                     </p>
 
                     <p style="margin: 0;">
-                        {{ $SectionSubject->gradeLevel }}
+                        GradeLevel: {{ $SectionSubject->gradeLevel }}
                         <span class="ms-3">
 
 
-                           {{ $SectionSubject->section->sectionStudents->count() }}
+                           Students: {{ $SectionSubject->section->sectionStudents->count() }}
 
                         </span>
 

@@ -71,6 +71,8 @@ class TeacherController extends Controller
     }
 
 
+
+
       /**
      * Store a newly created resource in storage.
      *
@@ -106,8 +108,8 @@ class TeacherController extends Controller
                 $name = $request->file('fileupload');
                 $filename = $name->getClientOriginalName();
                 $pathstore = $request->file('fileupload')->store('teacher/'.$request->subjectname.$request->sectionid);
-                $fileurl = 'public/teacher/'.($request->subjectname.$request->sectionid).'/'.$filename;
-                $destinationPath = public_path('/teacher/'.$request->subjectname.$request->sectionid.'/');
+                $fileurl = 'teacher/'.($request->subjectname.$request->sectionid).'/'.$filename;
+                $destinationPath = public_path('teacher/'.$request->subjectname.$request->sectionid.'/');
                 $name->move($destinationPath,$filename);
                 $lastinsertid = $postedcontent->postID;
                     $postrow = PostThread::find($lastinsertid);
@@ -125,6 +127,16 @@ class TeacherController extends Controller
         }
     }
 
+
+    public function getDownload(){
+    $file= public_path(). "/download/info.pdf";
+
+    $headers = array(
+              'Content-Type: application/pdf',
+            );
+
+    return Response::download($file, 'filename.pdf', $headers);
+}
 
     public function addcomment(Request $request){
         $request->validate([
