@@ -10,6 +10,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SectionStudentController;
 use App\Http\Controllers\SectionSubjectController;
 use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\PostThread;
 use Illuminate\Support\Facades\Route;
 use App\Models\teacher;
 use App\Http\Controllers\ContentsEventsController;
@@ -106,7 +107,13 @@ Route::middleware('auth')->group(function () {
     // route for teacher class stream page
     Route::get('/teacher/class-stream', [TeacherController::class, 'classStream'])->name('teacherClassStream');
 
-    //Show selected section
+    // route for teacher add post
+    Route::post('/teacher/class-steam/addpost', [TeacherController::class, 'addpost'])->name('teacherAddpost');
+
+    // route for teacher add post
+    Route::post('/teacher/class-steam/addcomment', [TeacherController::class, 'addcomment'])->name('teacherAddComment');
+
+    // route for Show selected section
     Route::get('/teacher/class-stream/{section}', [TeacherController::class, 'classshow'])->name('teacherstudentshow');
 
     // route for teacher class activiy page
