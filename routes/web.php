@@ -26,7 +26,7 @@ use App\Http\Controllers\ContentsEventsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing-page');
 });
 
 Route::get('/dashboard', function () {
