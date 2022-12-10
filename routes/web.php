@@ -23,7 +23,7 @@ use App\Models\teacher;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing-page');
 });
 
 Route::get('/dashboard', function () {

@@ -1,4 +1,4 @@
-@extends('layout.guest-navbar')
+@extends('layouts.guest-navbar')
 @section('content')
 <!-- home -->
 <section id="home">
