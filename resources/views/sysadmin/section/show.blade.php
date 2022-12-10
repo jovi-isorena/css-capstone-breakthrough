@@ -43,7 +43,7 @@
                             @if ($section->teacherID)
                                 {{-- if section has adviser, show details. otherwise, show select button     --}}
                                 <div class="d-flex">
-                                    <img src="{{ $section->teacher->imageURL}}" alt="adviser image" style="width:50px; height:50px;">
+                                    <img src="{{ Url($section->teacher->imageURL)}}" alt="adviser image" style="width:50px; height:50px;">
                                     <span>{{ $section->teacher->firstName . ' ' . $section->teacher->lastName }}</span>
 
                                 </div>
