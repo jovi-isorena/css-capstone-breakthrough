@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SectionStudentController;
@@ -94,7 +95,10 @@ Route::middleware('auth')->group(function () {
     // Route::get('/teacher/login', function () {
     //     return view('teacher/login-page/index');
     // });
-
+    
+    //routr for sysadmin create teacher info with photo
+    Route::get('upload-image', [UserController::class, 'index']);
+    Route::post('save', [UserController::class, 'savephoto']);
 
     // route for teacher classes
     Route::get('/teacher/classes', [TeacherController::class, 'classes'])->name('teacherClasses');
@@ -133,6 +137,12 @@ Route::middleware('auth')->group(function () {
     // Route::get('/teacher/profile', function () {
     //     return view('teacher/profile-page/index');
     // });
+
+    // route for student subjects
+    Route::get('/student/subjects', [StudentController::class, 'Subjects'])->name('subjects');
+    // student class stream
+    Route::get('/student/class-stream/{id}', [StudentController::class, 'studentClassStream'])->name('studentClassStream');
+
 
 });
 require __DIR__.'/auth.php';

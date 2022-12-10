@@ -5,7 +5,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabelTeacher">Create New Teacher Account</h1>
           <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('accountStore')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('accountStore')}}" method="POST">
             @csrf
             <div class="modal-body">
                 <input type="hidden" name="role" value="teacher">
@@ -90,7 +90,8 @@
                                             <option value="" hidden disabled selected>--Select One--</option>
                                             <option value="Regular">Regular</option>
                                             <option value="Part-time">Part-time</option>
-                                        </select><div class="col-md-11"><label for="image" class="form-label">--Select Photo--</label>
+                                        </select>
+                                        <div class="col-md-11"><label for="image" class="form-label">--Select Photo--</label>
                                             <input type="file" class="" name="imageURL" id="imageURL"> 
                                             @error('image')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -105,7 +106,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary bg-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success bg-success">Create</button>
+                <button type="submit" class="btn btn-success bg-success">Update</button>
             </div>
         </form>
       </div>

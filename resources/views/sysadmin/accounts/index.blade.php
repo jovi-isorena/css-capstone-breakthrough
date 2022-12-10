@@ -7,6 +7,7 @@
                 </h2>
 
             </div>
+            @include('components.toast')
             <div class="col-md-2">
 
                 <button class="btn btn-success justify-self-right" data-bs-toggle="modal" data-bs-target="#createSelect">

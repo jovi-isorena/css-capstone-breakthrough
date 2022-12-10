@@ -5,7 +5,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabelStudent">Create New Student Account</h1>
           <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('accountStore')}}" method="POST">
+        <form action="{{route('accountStore')}}" method="POST" enctype='multipart/form-data'>
             @csrf
             <div class="modal-body">
                 <input type="hidden" name="role" value="student">
@@ -89,6 +89,12 @@
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
+                                        <div class="col-md-11"><label for="image" class="form-label">--Select Photo--</label>
+                                            <input type="file" class="" name="imageURL" id="imageURL"> 
+                                            @error('image')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+</div>
                                     </div>
                                 </div>
                             </div>

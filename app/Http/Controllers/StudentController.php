@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SectionSubject;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Resources\StudentResource;
@@ -83,7 +84,31 @@ class StudentController extends Controller
     {
         //
     }
+    public function subjects(){
+        
+        $section = auth()->user()->student->sectionStudents[0]->sectionID;
+        $subjects = SectionSubject::where('sectionID', $section)->get();
+        
 
+        return view('student.subjects.index', [
+            'subjects' =>  $subjects
+            
+        ]);
+    }
+
+    public function studentClassStream(Request $request){
+        $section = auth()->user()->student->sectionStudents[0]->sectionID;
+        $displays = SectionSubject::where('sectionID', $section)->get();
+        $teacherID = SectionSubject::where('sectionSubjectID', $request->id)->value('teacherID');
+
+        return view('student.student-class-stream-page.index', [
+            'displays' =>  $displays, 
+             'section' => $section,
+             'teacherID' => $teacherID
+            
+        ]);
+
+    }
     // api functions
 
     public function getStudents(Request $request){

@@ -614,7 +614,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ma
 (26, 'Carl Vincent Chua', 'carl.vincent.paciente.chua@gmail.com', NULL, '$2y$10$23EDK.Ctpc/dEfK7kxRviO2eLG8c5cVrgsPzPXkBEkh6kt5UJu2t.', 1, NULL, NULL, NULL, NULL, 'teacher', '2022-12-01 22:19:16', '2022-12-01 22:19:16', 'active'),
 (27, 'Blekxsy Jean Daloso', 'blekxsy.jean.ancheta.daloso@gmail.com', NULL, '$2y$10$FJRwHO.B3L9GWstkaux8f.DbhigTMSuZGuO6C7bTbSZmz/4f9AIV2', 1, NULL, NULL, NULL, NULL, 'teacher', '2022-12-01 22:21:13', '2022-12-01 22:21:13', 'active'),
 (28, 'Aldrin Estanislao', 'aldrin.deasas.estanislao@gmail.com', NULL, '$2y$10$htNJY.axhMAP49Z2mxfZyOAERXIXKJ2cy4bkZ0W1QJkN0NgfdNs.S', 1, NULL, NULL, NULL, NULL, 'teacher', '2022-12-01 22:22:00', '2022-12-01 22:22:00', 'active'),
-(29, 'Anna Manansala', 'anna.aquino.manansala@gmail.com', NULL, '$2y$10$s9dq/rOTowV03z2RUWA22esFwpy4SQsGtOGkkodY/uI4jW1NWoMee', 1, NULL, NULL, NULL, NULL, 'teacher', '2022-12-01 22:22:36', '2022-12-01 22:22:36', 'active');
+(29, 'Ansna Manansala', 'anna.aquino.manansala@gmail.com', NULL, '$2y$10$s9dq/rOTowV03z2RUWA22esFwpy4SQsGtOGkkodY/uI4jW1NWoMee', 1, NULL, NULL, NULL, NULL, 'teacher', '2022-12-01 22:22:36', '2022-12-01 22:22:36', 'active');
+(30, 'Leomar Sanguenza', 'leomar.tariao.sanguenza@gmail.com', NULL, '$2y$10$42OQwM7ojd8tCkXP76HjYeOl7venZjXaD39PVHT9RaNL64R4yB1Aq', 0, NULL, NULL, NULL, NULL, 'sysadmin', '2022-12-02 05:50:47', '2022-12-03 02:47:01', 'active'),
 
 --
 -- Indexes for dumped tables

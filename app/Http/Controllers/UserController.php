@@ -27,17 +27,11 @@ class UserController extends Controller
             'users' => $users
         ]);
     }
-
-    /**
+   /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response;
      */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,6 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         if($request->input('role') === 'sysadmin'){
             $request->validate([
                 'fname'=> 'required|max:255',
@@ -110,20 +105,25 @@ class UserController extends Controller
             ]);
             if($user->save()){
                 $teacher = Teacher::make([
-                    'userID' => $user->id,
-                    'firstName' => $request->input('fname'),
-                    'middleName' => $request->input('mname'),
-                    'lastName' => $request->input('lname'),
-                    'suffix' => $request->input('suffix'),
-                    'position' => $request->input('position'),
-                    'employmentStatus' =>  $request->input('employmentStatus'),
-                    'imageURL' => '',
+                    'userID' => $user->id, 
+                    'firstName' => $request->input('fname'), 
+                    'middleName' => $request->input('mname'), 
+                    'lastName' => $request->input('lname'), 
+                    'suffix' => $request->input('suffix'), 
+                    'position' => $request->input('position'), 
+                    'employmentStatus' =>  $request->input('employmentStatus'), 
+                    'imageURL' => $request->imageURL,
                     'status' => 'active'
                 ]);
-
+                $request->imageURL;
+                $file = $request->file('imageURL');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time().'.'.$extention;
+                $file->move(public_path('Images/teachers'), $filename);
+                $teacher->imageURL ='Images/teachers/'.$filename;
                 if($teacher->save()){
                     //send email to the registered email address of the user
-                    Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                  //  Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
@@ -152,20 +152,25 @@ class UserController extends Controller
             ]);
             if($user->save()){
                 $student = Student::make([
-                    'userID' => $user->id,
-                    'firstName' => $request->input('fname'),
-                    'middleName' => $request->input('mname'),
-                    'lastName' => $request->input('lname'),
-                    'suffix' => $request->input('suffix'),
-                    'gender' =>  $request->input('gender'),
-                    'gradeLevel' =>  $request->input('gradeLevel'),
-                    'imageURL' => '',
+                    'userID' => $user->id, 
+                    'firstName' => $request->input('fname'), 
+                    'middleName' => $request->input('mname'), 
+                    'lastName' => $request->input('lname'), 
+                    'suffix' => $request->input('suffix'), 
+                    'gender' =>  $request->input('gender'), 
+                    'gradeLevel' =>  $request->input('gradeLevel'), 
+                    'imageURL' => $request->imageURL, 
                     'status' => 'active'
                 ]);
-
+                $request->imageURL;
+                $file = $request->file('imageURL');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time().'.'.$extention;
+                $file->move(public_path('Images/students'), $filename);
+                $student->imageURL ='Images/students/'.$filename;
                 if($student->save()){
                     //send email to the registered email address of the user
-                    Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                    // Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }

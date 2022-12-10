@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\StudentController;
 
 /**
  * @property integer $studentID
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $status
- * @property ClassStudent[] $classStudents
+ * @property SectionStudent[] $sectionStudents
  * @property User $user
  * @property StudentBadge[] $studentBadges
  * @property Submission[] $submissions
@@ -45,11 +46,14 @@ class Student extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function classStudents()
+    public function sectionStudents()
     {
-        return $this->hasMany('App\Models\ClassStudent', 'studentID', 'studentID');
+        return $this->hasMany('App\Models\SectionStudent', 'studentID', 'studentID');
     }
-
+    public function sectionSubjects()
+    {
+        return $this->hasMany('App\Models\SectionSubject', 'teacherID', 'teacherID');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
