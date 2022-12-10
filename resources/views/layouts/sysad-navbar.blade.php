@@ -18,11 +18,11 @@
                     <x-nav-link :href="route('accounts')" :active="request()->routeIs('accounts')">
                         {{ __('Accounts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('curriculums')" :active="request()->routeIs('curriculums')">
-                        {{ __('Curriculums') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('schoolYears')" :active="request()->routeIs('schoolYears')">
                         {{ __('School Years') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('curriculums')" :active="request()->routeIs('curriculums')">
+                        {{ __('Curriculums') }}
                     </x-nav-link>
                     <x-nav-link :href="route('sections')" :active="request()->routeIs('sections')">
                         {{ __('Sections') }}
