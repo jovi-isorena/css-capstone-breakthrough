@@ -38,7 +38,7 @@
                             Adviser
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div id="panelsStayOpen-collapseTwo-ignore" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
                             @if ($section->teacherID)
                                 {{-- if section has adviser, show details. otherwise, show select button     --}}
@@ -67,7 +67,7 @@
                         </button>
                         
                   </h2>
-                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                  <div id="panelsStayOpen-collapseOne-ignore" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
                             <form action="{{ route('sectionUpdateTeachers') }}" method="post">
                                 @csrf
@@ -126,7 +126,7 @@
                             Students
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                    <div id="panelsStayOpen-collapseThree-ignore" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div class="accordion-body">
                             {{-- search bar for student --}}
                             <div class="relative">
