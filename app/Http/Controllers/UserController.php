@@ -123,7 +123,7 @@ class UserController extends Controller
                 $teacher->imageURL ='Images/teachers/'.$filename;
                 if($teacher->save()){
                     //send email to the registered email address of the user
-                  //  Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                   Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
@@ -170,7 +170,7 @@ class UserController extends Controller
                 $student->imageURL ='Images/students/'.$filename;
                 if($student->save()){
                     //send email to the registered email address of the user
-                    // Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
+                    Mail::to($user)->queue(new NewAccountMail($user, $plaintextPassword));
                     return redirect(route('accounts'))->with('success','Account Created');
                 }
             }
