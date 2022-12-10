@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="d-flex align-items-center">
-            <div class="col-md-1 border-2">
+            <div class="col-md-1">
                 <a href="{{ route('sections') }}" class="btn btn-dark"><i class="fas fa-chevron-left"></i></a>
                 
             </div>
