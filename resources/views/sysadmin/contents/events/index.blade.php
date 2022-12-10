@@ -27,6 +27,7 @@
                         <th class="text-start">Date</th>
                         <th class="text-start">time</th>
                         <th class="text-start">Notes</th>
+                        <th class="text-start"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,12 +39,14 @@
                             <td class="text-start">{{$event->time}}</td>
                             <td class="text-start">{{$event->notes}}</td>
                             <td class="text-start">
-                                <button class="btn btn-primary" onclick="viewEvent({{$event}})">View</button>
-                                <form method="POST" action="{{ url('sysadmin/contents/events/archive', $event->id) }}">
-                                    {{ csrf_field() }}
-                                    {{ method_field('put') }}
-                                    <button class="btn btn-danger bg-danger" >Archive</button>
-                                </form>
+                                <div class="d-flex">
+                                    <button class="btn btn-primary mr-2" onclick="viewEvent({{$event}})">View</button>
+                                    <form method="POST" action="{{ url('sysadmin/contents/events/archive', $event->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('put') }}
+                                        <button class="btn btn-danger bg-danger" >Archive</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
