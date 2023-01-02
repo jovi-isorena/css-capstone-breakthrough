@@ -1,5 +1,5 @@
  <!-- Modal -->
- <div class="modal fade" id="archieveModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="archieveModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,8 +10,8 @@
          <h1>Do you want to archieve?</h1>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Archieve</button>
+          <a class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
+          <a class="btn btn-primary" href=" {{ route('accountsarchieve', $user->id) }}">Archieve</a>
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/accounts', [UserController::class, 'index'])->name('accounts');
     Route::post('sysadmin/account', [UserController::class, 'store'])->name('accountStore');
     Route::get('sysadmin/account/{account}', [UserController::class, 'show'])->name('accountShow');
-    Route::get('sysadmin/archieve', [UserController::class, 'archieve'])->name('accountsarchieve');
+    Route::get('sysadmin/archieve/{id}', [UserController::class, 'archieve'])->name('accountsarchieve');
 
     //curriculum
     Route::get('sysadmin/curriculums', [CurriculumController::class, 'index'])->name('curriculums');

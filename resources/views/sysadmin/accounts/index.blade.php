@@ -41,14 +41,14 @@
                             <td>{{$user->role}}</td>
                             <td>
                                 <a href="{{ route('accountShow', $user->id) }}" class="btn btn-primary">View</a>
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#archieveModal">Archive</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#archieveModal{{ $user->id }}">Archive</button>
                             </td>
                         </tr>
+                        @include('sysadmin.accounts.partials.archieveaccounts')
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    @include('sysadmin.accounts.partials.archieveaccounts')
 
 </x-app-layout>

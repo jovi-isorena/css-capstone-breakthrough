@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('status','active')->get();
         return view('sysadmin.accounts.index',[
             'users' => $users
         ]);
@@ -105,13 +105,13 @@ class UserController extends Controller
             ]);
             if($user->save()){
                 $teacher = Teacher::make([
-                    'userID' => $user->id, 
-                    'firstName' => $request->input('fname'), 
-                    'middleName' => $request->input('mname'), 
-                    'lastName' => $request->input('lname'), 
-                    'suffix' => $request->input('suffix'), 
-                    'position' => $request->input('position'), 
-                    'employmentStatus' =>  $request->input('employmentStatus'), 
+                    'userID' => $user->id,
+                    'firstName' => $request->input('fname'),
+                    'middleName' => $request->input('mname'),
+                    'lastName' => $request->input('lname'),
+                    'suffix' => $request->input('suffix'),
+                    'position' => $request->input('position'),
+                    'employmentStatus' =>  $request->input('employmentStatus'),
                     'imageURL' => $request->imageURL,
                     'status' => 'active'
                 ]);
@@ -152,14 +152,14 @@ class UserController extends Controller
             ]);
             if($user->save()){
                 $student = Student::make([
-                    'userID' => $user->id, 
-                    'firstName' => $request->input('fname'), 
-                    'middleName' => $request->input('mname'), 
-                    'lastName' => $request->input('lname'), 
-                    'suffix' => $request->input('suffix'), 
-                    'gender' =>  $request->input('gender'), 
-                    'gradeLevel' =>  $request->input('gradeLevel'), 
-                    'imageURL' => $request->imageURL, 
+                    'userID' => $user->id,
+                    'firstName' => $request->input('fname'),
+                    'middleName' => $request->input('mname'),
+                    'lastName' => $request->input('lname'),
+                    'suffix' => $request->input('suffix'),
+                    'gender' =>  $request->input('gender'),
+                    'gradeLevel' =>  $request->input('gradeLevel'),
+                    'imageURL' => $request->imageURL,
                     'status' => 'active'
                 ]);
                 $request->imageURL;
@@ -223,5 +223,13 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function archieve($id)
+    {
+        $userid = User::find($id);
+        if($userid->update(['status' => 'inactive'])){
+            return back()->with('success', 'Account archive :)');
+        }
     }
 }
