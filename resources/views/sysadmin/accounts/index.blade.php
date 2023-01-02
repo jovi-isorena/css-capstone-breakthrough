@@ -22,7 +22,7 @@
         @include('sysadmin.accounts.partials.createSysadmin')
         @include('sysadmin.accounts.partials.createTeacher')
         @include('sysadmin.accounts.partials.createStudent')
-               
+
         <div class="my-5">
             <table class="table text-center">
                 <thead>
@@ -36,17 +36,19 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{$user->id}}</td>    
-                            <td>{{$user->name}}</td>    
-                            <td>{{$user->role}}</td>    
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->role}}</td>
                             <td>
                                 <a href="{{ route('accountShow', $user->id) }}" class="btn btn-primary">View</a>
-                                <button class="btn btn-danger">Archive</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#archieveModal">Archive</button>
                             </td>
-                        </tr>    
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    @include('sysadmin.accounts.partials.archieveaccounts')
+
 </x-app-layout>
