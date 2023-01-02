@@ -47,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/accounts', [UserController::class, 'index'])->name('accounts');
     Route::post('sysadmin/account', [UserController::class, 'store'])->name('accountStore');
     Route::get('sysadmin/account/{account}', [UserController::class, 'show'])->name('accountShow');
-    
+    Route::get('sysadmin/archieve', [UserController::class, 'archieve'])->name('accountsarchieve');
+
     //curriculum
     Route::get('sysadmin/curriculums', [CurriculumController::class, 'index'])->name('curriculums');
     Route::get('sysadmin/curriculum/create', [CurriculumController::class, 'create'])->name('curriculumCreate');
@@ -96,7 +97,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/teacher/login', function () {
     //     return view('teacher/login-page/index');
     // });
-    
+
     //routr for sysadmin create teacher info with photo
     Route::get('upload-image', [UserController::class, 'index']);
     Route::post('save', [UserController::class, 'savephoto']);
@@ -149,6 +150,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/student/subjects', [StudentController::class, 'Subjects'])->name('subjects');
     // student class stream
     Route::get('/student/class-stream/{id}', [StudentController::class, 'studentClassStream'])->name('studentClassStream');
+
 
 
 });
