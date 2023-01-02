@@ -14,7 +14,7 @@ class SchoolYearController extends Controller
      */
     public function index()
     {
-        $schoolYears = SchoolYear::all();
+        $schoolYears = SchoolYear::where('status','active')->get();
         return view('sysadmin.schoolyear.index', [
             'schoolYears' => $schoolYears
         ]);
@@ -104,5 +104,15 @@ class SchoolYearController extends Controller
     public function destroy(SchoolYear $schoolYear)
     {
         //
+    }
+    public function archive(SchoolYear $schoolYear){
+        if($schoolYear->update ([
+            'status' => 'inactive'
+        ])){
+            return back()->with('success', 'School year successfully archived');
+        }
+        else{
+            return back()->with('danger', 'School year not archived');
+        }
     }
 }

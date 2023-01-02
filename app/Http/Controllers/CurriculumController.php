@@ -15,7 +15,7 @@ class CurriculumController extends Controller
      */
     public function index()
     {
-        $curriculums = Curriculum::all();
+        $curriculums = Curriculum::where('status', 'active')->get();
         return view('sysadmin.curriculum.index', [
             'curriculums' => $curriculums
         ]);
@@ -121,5 +121,15 @@ class CurriculumController extends Controller
     public function destroy(Curriculum $curriculum)
     {
         //
+    }
+    public function archive(Curriculum $curriculum){
+        if($curriculum->update ([
+            'status' => 'inactive'
+        ])){
+            return back()->with('success', 'Curriculum successfully archived');
+        }
+        else{
+            return back()->with('danger', 'Curriculum not archived');
+        }
     }
 }
