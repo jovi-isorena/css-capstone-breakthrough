@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/curriculum/create', [CurriculumController::class, 'create'])->name('curriculumCreate');
     Route::post('sysadmin/curriculum/store', [CurriculumController::class, 'store'])->name('curriculumStore');
     Route::get('sysadmin/curriculum/{curriculum}', [CurriculumController::class, 'show'])->name('curriculumShow');
+    Route::get('sysadmin/curriculum/{curriculum}/archive', [CurriculumController::class, 'archive'])->name('curriculumArchive');
     Route::get('sysadmin/curriculum/{curriculum}/edit', [CurriculumController::class, 'edit'])->name('curriculumEdit');
     Route::put('sysadmin/curriculum/{curriculum}/update', [CurriculumController::class, 'update'])->name('curriculumUpdate');
     
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/schoolYear/create', [SchoolYearController::class, 'create'])->name('schoolYearCreate');
     Route::post('sysadmin/schoolYear/store', [SchoolYearController::class, 'store'])->name('schoolYearStore');
     Route::get('sysadmin/schoolYear/{schoolYear}', [SchoolYearController::class, 'show'])->name('schoolYearShow');
+    Route::get('sysadmin/schoolYear/{schoolYear}/archive', [SchoolYearController::class, 'archive'])->name('schoolYearArchive');
     Route::get('sysadmin/schoolYear/{schoolYear}/edit', [SchoolYearController::class, 'edit'])->name('schoolYearEdit');
     Route::put('sysadmin/schoolYear/{schoolYear}/update', [SchoolYearController::class, 'update'])->name('schoolYearUpdate');
     

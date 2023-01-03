@@ -35,12 +35,10 @@
                             <td>
                                 <a href="{{ route('curriculumShow',$curriculum->curriculumID) }}" class="btn btn-primary">View</a>
                                 <!-- Button trigger modal -->
-<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1{{$curriculum->curriculumID}}">
   Archive
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</a>
+<div class="modal fade" id="exampleModal1{{$curriculum->curriculumID}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,16 +50,27 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn btn-primary">Save changes</button>
+        <a href="{{route('curriculumArchive', $curriculum->curriculumID)}}" class="btn btn-danger">Archive</a>
+        @endforeach
       </div>
     </div>
   </div>
 </div>
                             </td>
                         </tr>    
-                    @endforeach
                 </tbody>
-            </table>
+            </table>   
         </div>
     </div>
+    <!--
+    <script> const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})</script> -->
+
+
+<!-- Modal -->
+
 </x-app-layout>
