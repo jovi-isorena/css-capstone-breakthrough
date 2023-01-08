@@ -9,6 +9,6 @@ class ContentsEvents extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'date', 'time', 'notes'];
+    protected $fillable = ['name', 'date', 'time', 'notes','status'];
 
 }

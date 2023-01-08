@@ -14,7 +14,8 @@ class ContentsEventsController extends Controller
     */
     public function index()
     {
-        $events = ContentsEvents::all();
+        $events = ContentsEvents::all()
+            ->where('status', '<>', 'inactive');
         return view('sysadmin/contents/events.index', compact('events'));
     }
 
@@ -40,40 +41,39 @@ class ContentsEventsController extends Controller
     * Update the specified resource in storage.
     *
     * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'date' => 'required',
         ]);
-        $event = ContentsEvents::find($id);
-
-        $event->fill($request->post())->save();
-
-        return redirect()->route('contentsEvents')->with('success','Event Has Been updated successfully');
+        $event = ContentsEvents::find($request->id);
+        if($event->update([
+            'name' => $request->post('name'),
+            'date' => $request->post('date'),
+            'time' => $request->post('time'),
+            'notes' => $request->post('notes')
+        ])) {
+            return redirect()->route('contentsEvents')->with('success','Event Has Been updated successfully');
+        }else {
+            return redirect()->route('contentsEvents')->with('danger','Failed to update Event.');
+        }
     }
 
     /**
-    * Remove the specified resource from storage.
+    * Update the specified resource in storage.
     *
-    * @param  \App\Models\ContentsEvents  $event
     * @return \Illuminate\Http\Response
     */
-    public function destroy(ContentsEvents  $event)
-    {
-        $event->delete();
-        return redirect()->route('contentsEvents.index')->with('success','Event has been deleted successfully');
-    }
-    public function archive(Request $request, $id)
+    public function archive($id)
     {
         $event = ContentsEvents::find($id);
         if($event->update(['status' => 'inactive'])){
-            return back()->with('success', 'event archive :)');
+            return redirect()->route('contentsEvents')->with('success', 'event archive :)');
         }else{
-            return back()->with('danger', 'event archive :)');
+            return redirect()->route('contentsEvents')->with('danger', 'event archive :)');
         }
     }
 }

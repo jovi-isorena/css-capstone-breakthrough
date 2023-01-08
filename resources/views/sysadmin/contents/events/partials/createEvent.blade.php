@@ -48,6 +48,8 @@
                                     </span>
                                     <textarea class="form-control" id="notes" name="notes"></textarea>
                                 </div>
+
+                                <input type="hidden" class="form-control" id="status" name="status" value="active">
                             </div>
                         </div>
                     </div>

@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sysadmin/accounts', [UserController::class, 'index'])->name('accounts');
     Route::post('sysadmin/account', [UserController::class, 'store'])->name('accountStore');
     Route::get('sysadmin/account/{account}', [UserController::class, 'show'])->name('accountShow');
-    
+
     //curriculum
     Route::get('sysadmin/curriculums', [CurriculumController::class, 'index'])->name('curriculums');
     Route::get('sysadmin/curriculum/create', [CurriculumController::class, 'create'])->name('curriculumCreate');
@@ -84,7 +84,8 @@ Route::middleware('auth')->group(function () {
     // contents events
     Route::get('sysadmin/contents/events', [ContentsEventsController::class, 'index'])->name('contentsEvents');
     Route::post('sysadmin/contents/events', [ContentsEventsController::class, 'store'])->name('contentsEventsStore');
-    Route::put('sysadmin/contents/events', [ContentsEventsController::class, 'update'])->name('contentsEventsUpdate');
+    Route::put('sysadmin/contents/events/update', [ContentsEventsController::class, 'update'])->name('contentsEventsUpdate');
+    Route::put('sysadmin/contents/events/{id}', [ContentsEventsController::class, 'archive'])->name('contentsEventsArchive');
 
     // ROUTES FOR TEACHERS
     // route for teacher homepage
@@ -96,7 +97,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/teacher/login', function () {
     //     return view('teacher/login-page/index');
     // });
-    
+
     //routr for sysadmin create teacher info with photo
     Route::get('upload-image', [UserController::class, 'index']);
     Route::post('save', [UserController::class, 'savephoto']);

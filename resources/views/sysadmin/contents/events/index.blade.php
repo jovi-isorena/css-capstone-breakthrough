@@ -41,9 +41,9 @@
                             <td class="text-start">
                                 <div class="d-flex">
                                     <button class="btn btn-primary mr-2" onclick="viewEvent({{$event}})">View</button>
-                                    <form method="POST" action="{{ url('sysadmin/contents/events/archive', $event->id) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('put') }}
+                                    <form method="POST" action="{{route('contentsEventsArchive', $event->id) }}">
+                                        @csrf
+                                        @method('PUT')
                                         <button class="btn btn-danger bg-danger" >Archive</button>
                                     </form>
                                 </div>

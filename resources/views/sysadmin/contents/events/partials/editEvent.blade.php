@@ -5,7 +5,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabelStudent">Event</h1>
           <button  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{route('contentsEventsUpdate')}}" method="PUT">
+        <form action="{{route('contentsEventsUpdate')}}" method="POST">
             @csrf
             @method('PUT')
             <div class="modal-body">
