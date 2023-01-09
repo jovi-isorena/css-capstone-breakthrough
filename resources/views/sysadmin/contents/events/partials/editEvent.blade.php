@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="time" class="form-label">Time</label>
-                                    <span class="text-danger fst-italics">
+                                    <span class="text-danger fst-italics">*
                                         @error('time')
                                             {{ $message }}
                                         @enderror
@@ -43,12 +43,12 @@
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label for="notes" class="form-label">Notes</label>
-                                    <span class="text-danger fst-italics">
+                                    <span class="text-danger fst-italics">*
                                         @error('notes')
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <textarea class="form-control" id="notes" name="notes" ></textarea>
+                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
                                 </div>
                             </div>
                         </div>

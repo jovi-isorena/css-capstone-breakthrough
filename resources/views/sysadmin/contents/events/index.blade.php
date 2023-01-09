@@ -44,7 +44,7 @@
                                     <form method="POST" action="{{route('contentsEventsArchive', $event->id) }}">
                                         @csrf
                                         @method('PUT')
-                                        <button class="btn btn-danger bg-danger" >Archive</button>
+                                        <button class="btn btn-danger bg-danger" onClick="return confirm('Are you sure you want to archive this event? \n Event name: {{$event->name}}')">Archive</button>
                                     </form>
                                 </div>
                             </td>

@@ -19,7 +19,7 @@
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <input type="text" class="form-control" id="name" name="name" >
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="date" class="form-label">Date</label>
@@ -28,25 +28,25 @@
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <input type="date" class="form-control" id="date" name="date">
+                                    <input type="date" class="form-control" id="date" name="date" required>
                                 </div>
                                 <div class="col-6 mb-4">
                                     <label for="time" class="form-label">Time</label>
-                                    <span class="text-danger fst-italics">
+                                    <span class="text-danger fst-italics">*
                                         @error('time')
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <input type="time" class="form-control" id="time" name="time">
+                                    <input type="time" class="form-control" id="time" name="time" required>
                                 </div>
                                 <div class="col-12 mb-4">
                                     <label for="notes" class="form-label">Notes</label>
-                                    <span class="text-danger fst-italics">
+                                    <span class="text-danger fst-italics">*
                                         @error('notes')
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <textarea class="form-control" id="notes" name="notes"></textarea>
+                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
                                 </div>
 
                                 <input type="hidden" class="form-control" id="status" name="status" value="active">
